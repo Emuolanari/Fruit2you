@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Fruit2you</string>
+    <string name="welcome_to_our_shopping_platform">Welcome to Fruit2you</string>
+    <string name="sign_up_to_our_shopping_platform">Sign up to our shopping platform</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_here">Login here</string>
+    <string name="have_account">Already have an account?</string>
 </resources>
