@@ -1,4 +1,4 @@
-package com.example.fruit2you
+package com.app.fruit2you
 
 import org.junit.Test
 

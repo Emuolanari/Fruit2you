@@ -1,4 +1,4 @@
-package com.example.fruit2you
+package com.app.fruit2you
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "550154660161",
+    "firebase_url": "https://fruit2you-9b820.firebaseio.com",
+    "project_id": "fruit2you-9b820",
+    "storage_bucket": "fruit2you-9b820.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550154660161:android:80e9629b81fd0ce58859c0",
+        "android_client_info": {
+          "package_name": "com.app.fruit2you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550154660161-tsn43ai8c3alljrghhjfcl8qefg8dl64.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjjg4GBKqrkH49EaSkW9d2ohFVtZKAdJA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550154660161-tsn43ai8c3alljrghhjfcl8qefg8dl64.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
