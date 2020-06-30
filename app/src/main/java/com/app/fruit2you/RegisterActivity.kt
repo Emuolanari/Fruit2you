@@ -11,7 +11,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         loginHere.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
