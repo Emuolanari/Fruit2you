@@ -7,6 +7,10 @@
     <string name="full_name">Full Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="email">Email</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="order">Order</string>
+    <string name="profile">Profile</string>
     <string name="signinbtn">Sign In</string>
     <string name="password">Password</string>
     <string name="login_here">Login here</string>
