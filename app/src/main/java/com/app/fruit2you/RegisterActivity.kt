@@ -24,7 +24,7 @@ class RegisterActivity : AppCompatActivity() {
         button.setOnClickListener { formValidation() }
     }
 
-    public override fun onStart() {
+    /*public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         if(currentUser!=null){
@@ -32,31 +32,46 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-    }
+    }*/
 
     private fun formValidation(){
-        val name=fullName.text.toString().trim()
+        val phoneRegex:Regex ="[0][7-9][0-1]([0-9]{8})".toRegex()
+        val nameRegex = "^[\\p{L} .'-]+$".toRegex()
+        val name=fullName.text.toString().trim().toUpperCase()
         val mail = email.text.toString().trim()
         val phon = phone.text.toString().trim()
         val passwd = password.text.toString().trim()
 
-        if(TextUtils.isEmpty(name))
+        if(TextUtils.isEmpty(name)||!name.matches(nameRegex)){
             fullName.error = "Please enter your full name"
+            return
+        }
 
-        if(TextUtils.isEmpty(mail))
+
+        if(TextUtils.isEmpty(mail)) {
             email.error = "Please enter a valid email address"
+            return
+        }
 
-        if (TextUtils.isEmpty(phon))
-            phone.error = "Please enter your phone nummber"
+        if (TextUtils.isEmpty(phon)||!phon.matches(phoneRegex)) {
+            phone.error = "Please enter your phone number"
+            return
+        }
 
-        if(TextUtils.isEmpty(passwd))
+        if(TextUtils.isEmpty(passwd)){
             password.error= "Please choose a password"
+            return
+        }
 
-        if(passwd.length<6)
-            password.error= "Please enter a strong password"
+        if(passwd.length<6){
+            password.error= "Please enter a password up to 6 characters"
+            return
+        }
 
-        if(phon.length!=11)
-        phone.error ="Please enter valid phone number starting with 0 e.g 080..."
+        if(phon.length!=11) {
+            phone.error = "Please enter valid phone number starting with 0 e.g 080..."
+            return
+        }
 
 
         else{

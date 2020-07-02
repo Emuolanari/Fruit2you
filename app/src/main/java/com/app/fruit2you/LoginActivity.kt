@@ -23,6 +23,10 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         signin.setOnClickListener {formValidation() }
+        signupnow.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     public override fun onStart() {
