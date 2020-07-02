@@ -3,6 +3,7 @@
     <string name="welcome_to_our_shopping_platform">Welcome to Fruit2you</string>
     <string name="sign_up_to_our_shopping_platform">Sign up to our shopping platform</string>
     <string name="sign_up">Sign Up</string>
+    <string name="sign_up_now">Sign Up!</string>
     <string name="sign_in">Sign in with</string>
     <string name="full_name">Full Name</string>
     <string name="phone_number">Phone Number</string>
@@ -18,4 +19,15 @@
     <string name="have_account">Already have an account?</string>
     <string name="welcome_back">Welcome back!</string>
     <string name="design">header image</string>
+    <string name="description">Show/hide password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="available_products">Available Products</string>
+    <string name="orange_image">Orange Image</string>
+    <string name="_500_00">500.00</string>
+    <string name="orange">Orange</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="pcs">10 - 20 pcs</string>
+    <string name="mango_image">mango image</string>
+    <string name="mango">Mango</string>
 </resources>
