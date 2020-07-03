@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
+import java.util.*
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -24,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         button.setOnClickListener { formValidation() }
     }
 
-    /*public override fun onStart() {
+    public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
         if(currentUser!=null){
@@ -32,12 +33,12 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-    }*/
+    }
 
     private fun formValidation(){
         val phoneRegex:Regex ="[0][7-9][0-1]([0-9]{8})".toRegex()
         val nameRegex = "^[\\p{L} .'-]+$".toRegex()
-        val name=fullName.text.toString().trim().toUpperCase()
+        val name=fullName.text.toString().trim().toUpperCase(Locale.ROOT)
         val mail = email.text.toString().trim()
         val phon = phone.text.toString().trim()
         val passwd = password.text.toString().trim()
