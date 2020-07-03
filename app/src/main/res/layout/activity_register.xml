@@ -55,7 +55,7 @@
         <EditText
             android:id="@id/fullName"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -84,7 +84,7 @@
         <EditText
             android:id="@id/phone"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -113,7 +113,7 @@
         <EditText
             android:id="@id/email"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -141,7 +141,7 @@
         <EditText
             android:id="@id/password"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -197,10 +197,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
+            android:contentDescription="@string/design"
             app:layout_constraintBottom_toTopOf="@+id/platform"
             app:layout_constraintStart_toEndOf="@+id/welcome"
-            app:srcCompat="@drawable/circle"
-            android:contentDescription="@string/design" />
+            app:srcCompat="@drawable/circle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

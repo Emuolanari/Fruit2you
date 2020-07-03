@@ -27,7 +27,13 @@
     <string name="_500_00">500.00</string>
     <string name="orange">Orange</string>
     <string name="buy_now">Buy Now</string>
-    <string name="pcs">10 - 20 pcs</string>
+    <string name="pcs">10 &#8211; 20 pcs</string>
     <string name="mango_image">mango image</string>
+    <string name="coconut_image">coconut image</string>
+    <string name="strawberry_image">strawberry image</string>
     <string name="mango">Mango</string>
+    <string name="_1_pack_1_5kg">1 pack 1.5kg</string>
+    <string name="logout">logout</string>
+    <string name="strawberry">Strawberry</string>
+    <string name="coconut">Coconut</string>
 </resources>
