@@ -1,12 +1,12 @@
-package com.app.fruit2you
+package com.app.fruit2you.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = auth.currentUser
         if(currentUser!=null){
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -82,7 +82,8 @@ class RegisterActivity : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("TAG", "createUserWithEmail:success")
                         Toast.makeText(this,"Sign up successful",Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this,LoginActivity::class.java)
+                        val intent = Intent(this,
+                            LoginActivity::class.java)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.

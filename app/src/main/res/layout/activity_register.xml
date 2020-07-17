@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".RegisterActivity">
+        tools:context=".ui.RegisterActivity">
 
         <TextView
             android:id="@+id/welcome"
@@ -166,7 +166,7 @@
             android:textAllCaps="false"
             android:textColor="#000000"
             android:textStyle="bold"
-            app:backgroundTint="@color/colorAccent"
+            app:backgroundTint="#FCB51D"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -190,6 +190,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/login_here"
             android:textColor="@color/colorAccent"
+            android:textColorLink="#FCB51D"
             app:layout_constraintStart_toEndOf="@+id/haveAcoountText"
             app:layout_constraintTop_toBottomOf="@+id/button" />
 

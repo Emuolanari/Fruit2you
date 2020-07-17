@@ -36,4 +36,14 @@
     <string name="logout">logout</string>
     <string name="strawberry">Strawberry</string>
     <string name="coconut">Coconut</string>
+    <string name="sizes">sizes</string>
+    <string name="_1kg_n500">1kg-N500</string>
+    <string name="delivery">Delivery</string>
+    <string name="qty">Qty</string>
+    <string name="enter_drop_off_location">Enter drop off Location</string>
+    <string name="fruit">Fruit</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="_0">0</string>
+    <string name="ic_plus">ic_plus</string>
+    <string name="quantity">Quantity</string>
 </resources>
