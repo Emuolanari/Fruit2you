@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment: Fragment(R.layout.home_fragment) {
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val auth = FirebaseAuth.getInstance()
@@ -38,8 +37,6 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
             val intent = Intent(activity, FruitsActivity::class.java)
             intent.putExtra("coconut", R.id.coconutImage)
             startActivity(intent);
-
-
         }
 
     }

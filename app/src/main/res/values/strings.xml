@@ -33,7 +33,7 @@
     <string name="strawberry_image">strawberry image</string>
     <string name="mango">Mango</string>
     <string name="_1_pack_1_5kg">1 pack 1.5kg</string>
-    <string name="logout">logout</string>
+    <string name="logout">Logout</string>
     <string name="strawberry">Strawberry</string>
     <string name="coconut">Coconut</string>
     <string name="sizes">sizes</string>
@@ -46,4 +46,10 @@
     <string name="_0">0</string>
     <string name="ic_plus">ic_plus</string>
     <string name="quantity">Quantity</string>
+    <string name="profile_picture">Profile picture</string>
+    <string name="your_details">Your Details</string>
+    <string name="change_password">Change password</string>
+    <string name="security_icon">security icon</string>
+    <string name="reduce_image">reduce image</string>
+    <string name="fruit_image">fruit image</string>
 </resources>

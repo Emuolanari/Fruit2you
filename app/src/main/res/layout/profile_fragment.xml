@@ -3,29 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
 
     <Button
         android:id="@+id/signout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="24dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/poppins"
         android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
         app:backgroundTint="#FCB51D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="134dp"
-        android:layout_height="144dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/layerlist"
+        android:id="@+id/profilePic"
+        android:layout_width="116dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/profile_picture"
+        android:src="@drawable/profile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/detailsIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic"
+        app:srcCompat="@drawable/ic_details"
+        android:contentDescription="@string/your_details" />
+
+    <ImageView
+        android:id="@+id/securityIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp"
+        android:background="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsIcon"
+        app:srcCompat="@drawable/ic_security"
+        android:contentDescription="@string/security_icon" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/your_details"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/detailsIcon"
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/change_password"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/securityIcon"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

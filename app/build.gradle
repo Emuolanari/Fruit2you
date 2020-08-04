@@ -11,6 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.app.fruit2you"
+        vectorDrawables.useSupportLibrary = true
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -24,6 +25,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions{
+        jvmTarget = "1.8"
     }
 
 }
@@ -64,6 +75,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.fragment:fragment-ktx:1.2.2"
 
     // Kodein
     implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"

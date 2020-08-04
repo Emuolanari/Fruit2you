@@ -16,16 +16,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bigorange" />
+        app:srcCompat="@drawable/bigorange"
+        android:contentDescription="@string/fruit_image" />
 
     <RelativeLayout
         android:layout_width="246dp"
         android:layout_height="261dp"
         android:layout_marginTop="16dp"
         android:background="#d3d3d3"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fruitImage"
         app:layout_constraintVertical_bias="0.0">
@@ -54,8 +56,10 @@
             android:id="@+id/delivery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/fruitName"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:fontFamily="@font/poppins"
             android:text="@string/delivery" />
 
@@ -72,9 +76,9 @@
             android:id="@+id/qty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/weight"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins"
             android:text="@string/quantity" />
 
@@ -82,34 +86,35 @@
             android:id="@+id/plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_plus"
+            android:layout_below="@id/weight"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/qty"
-            android:layout_below="@id/weight"
-            android:contentDescription="@string/ic_plus" />
+            android:contentDescription="@string/ic_plus"
+            app:srcCompat="@drawable/ic_plus" />
 
         <TextView
             android:id="@+id/tvQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_0"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="10dp"
             android:layout_below="@id/weight"
-            android:layout_toEndOf="@id/plus"/>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/plus"
+            android:text="@string/_0" />
 
         <ImageView
             android:id="@+id/minus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_minus"
-            android:layout_marginStart="4dp"
             android:layout_below="@id/weight"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@id/tvQuantity" />
+            android:layout_toEndOf="@id/tvQuantity"
+            android:contentDescription="@string/reduce_image"
+            app:srcCompat="@drawable/ic_minus" />
 
-      <Button
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/plus"
@@ -120,7 +125,7 @@
             android:minHeight="0dp"
             android:text="@string/add_to_cart"
             android:textAllCaps="false"
-            app:backgroundTint= "#44AD65" />
+            app:backgroundTint="#44AD65" />
 
     </RelativeLayout>
 
