@@ -38,8 +38,8 @@ class LoginActivity : AppCompatActivity() {
                 val mail = resetMail.text.toString()
                 auth.sendPasswordResetEmail(mail).addOnSuccessListener {
                     Toast.makeText(this@LoginActivity,"Reset link sent to email",Toast.LENGTH_LONG).show()
-                }.addOnFailureListener {
-                    Toast.makeText(this@LoginActivity,"Failed, please try again later",Toast.LENGTH_LONG).show()
+                }.addOnFailureListener() {
+                    Toast.makeText(this@LoginActivity,"Failed. "+ it.message,Toast.LENGTH_LONG).show()
                 }
 
             }

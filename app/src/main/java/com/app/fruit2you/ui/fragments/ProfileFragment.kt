@@ -12,14 +12,14 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.profile_fragment.*
 
 class ProfileFragment: Fragment(R.layout.profile_fragment) {
-    private val imgRequestCode = 123;
+    private val imgRequestCode = 123
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val auth = FirebaseAuth.getInstance()
         profilePic.setOnClickListener {
-            val intent = Intent();
-            intent.type = "image/*";
-            intent.action = Intent.ACTION_GET_CONTENT;
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(Intent.createChooser(intent,"pick an image"), imgRequestCode)
         }
 
@@ -32,8 +32,8 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode==imgRequestCode && resultCode==RESULT_OK && data != null){
-            val imageData: Uri? = data.data;
-            profilePic.setImageURI(imageData);
+            val imageData: Uri? = data.data
+            profilePic.setImageURI(imageData)
         }
     }
 }
