@@ -1,19 +1,21 @@
 package com.app.fruit2you.ui
 
+import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.app.fruit2you.R
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+import java.security.AccessController.getContext
 
+@Suppress("NAME_SHADOWING")
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     val tag = "TAG"
@@ -24,6 +26,29 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         auth = FirebaseAuth.getInstance()
 
+        val mAlertDialog = findViewById<TextView>(R.id.forgot)
+        mAlertDialog.setOnClickListener {
+            val mAlertDialog = AlertDialog.Builder(this@LoginActivity)
+            val resetMail = EditText(this)
+            mAlertDialog.setTitle("Reset Password")
+            mAlertDialog.setMessage("Enter registered email to receive password reset link")
+            mAlertDialog.setIcon(R.mipmap.ic_launcher)
+            mAlertDialog.setView(resetMail)
+            mAlertDialog.setPositiveButton("send"){dialog: DialogInterface?, which: Int ->
+                val mail = resetMail.text.toString()
+                auth.sendPasswordResetEmail(mail).addOnSuccessListener {
+                    Toast.makeText(this@LoginActivity,"Reset link sent to email",Toast.LENGTH_LONG).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this@LoginActivity,"Failed, please try again later",Toast.LENGTH_LONG).show()
+                }
+
+            }
+            mAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->
+                dialog?.dismiss()
+
+            }
+            mAlertDialog.create().show()
+        }
         signin.setOnClickListener {formValidation() }
         signupnow.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)

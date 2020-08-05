@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "550154660161-0j7dtehfie3m7tpnorb7odtkngc0urhn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.fruit2you",
+            "certificate_hash": "d46e0cda3a9120427a24bb10ecd9424242d1af84"
+          }
+        },
+        {
           "client_id": "550154660161-tsn43ai8c3alljrghhjfcl8qefg8dl64.apps.googleusercontent.com",
           "client_type": 3
         }
