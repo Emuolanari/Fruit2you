@@ -59,4 +59,5 @@
     <string name="add_icon">add icon</string>
     <string name="subtract_icon">subtract icon</string>
     <string name="n">N</string>
+    <string name="add_items_to_cart">Add Items To Cart</string>
 </resources>

@@ -11,7 +11,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,11 +22,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:background="@drawable/buy"
+        android:fontFamily="@font/poppins"
         android:text="@string/checkout"
+        android:textStyle="bold"
+        android:visibility="visible"
         android:textAllCaps="false"
+        android:minHeight="0dp"
         app:backgroundTint="#44AD65"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cartRecyclerView" />
+
+    <Button
+        android:id="@+id/addItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:minHeight="0dp"
+        android:visibility="gone"
+        android:drawableLeft="@drawable/ic_cart"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="24dp"
+        android:text="@string/add_items_to_cart"
+        android:background="@drawable/buy"
+        app:backgroundTint="#44AD65"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
