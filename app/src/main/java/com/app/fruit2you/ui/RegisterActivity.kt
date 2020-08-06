@@ -8,15 +8,22 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var fstore: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
+        fstore = FirebaseFirestore.getInstance()
         setContentView(R.layout.activity_register)
         loginHere.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -82,6 +89,20 @@ class RegisterActivity : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("TAG", "createUserWithEmail:success")
                         Toast.makeText(this,"Sign up successful",Toast.LENGTH_SHORT).show()
+
+                        /*GlobalScope.launch(Dispatchers.IO) {
+                            val userID = auth.currentUser?.uid
+                            if (userID!=null){
+                                val documentReference: DocumentReference = fstore.collection("users").document(userID)
+                                val user: MutableMap<String, Any> = HashMap()
+                                user["fName"] = name
+                                user["email"] = email
+                                user["phone"] = phone
+                                documentReference.set(user)
+                            }
+
+
+                        }*/
                         val intent = Intent(this,
                             LoginActivity::class.java)
                         startActivity(intent)

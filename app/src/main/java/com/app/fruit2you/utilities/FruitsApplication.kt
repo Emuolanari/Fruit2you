@@ -1,4 +1,4 @@
-package com.app.fruit2you
+package com.app.fruit2you.utilities
 
 import android.app.Application
 import com.app.fruit2you.data.database.Fruit2YouDatabase
@@ -12,9 +12,10 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-class Fruit2YouApplication: Application(), KodeinAware {
+
+class FruitsApplication: Application(), KodeinAware{
     override val kodein: Kodein = Kodein.lazy {
-        import(androidXModule(this@Fruit2YouApplication))
+        import(androidXModule(this@FruitsApplication))
         bind() from singleton { Fruit2YouDatabase(instance()) }
         bind() from singleton { Fruit2YouRepository(instance()) }
         bind() from provider {Fruit2YouViewModelFactory(instance())}

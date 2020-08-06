@@ -16,4 +16,5 @@ class Fruit2YouViewModel(private val repository: Fruit2YouRepository): ViewModel
     }
 
     fun getAllShoppingItems() = repository.getAllShoppingItems()
+    fun numberOfCartItems() = repository.numberOfCartItems()
 }

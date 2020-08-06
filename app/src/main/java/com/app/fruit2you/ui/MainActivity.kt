@@ -4,24 +4,31 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.app.fruit2you.R
+import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.fragments.CartFragment
 import com.app.fruit2you.ui.fragments.HomeFragment
 import com.app.fruit2you.ui.fragments.OrderFragment
 import com.app.fruit2you.ui.fragments.ProfileFragment
 import com.google.firebase.auth.FirebaseAuth
+import com.app.fruit2you.ui.Fruit2YouViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 
 
 class MainActivity : AppCompatActivity(), KodeinAware {
     override val kodein by kodein()
-    //private val factory: Fruit2YouViewModel by instance()
+    private val factory: Fruit2YouViewModelFactory by instance()
 
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = ViewModelProviders.of(this, factory).get(Fruit2YouViewModel::class.java)
         auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_main)
 
@@ -40,10 +47,24 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             }
             true
         }
-        bottomNavigationView.getOrCreateBadge(R.id.miCart).apply {
-            number = 10
-            isVisible = true
-        }
+        viewModel.numberOfCartItems().observe(this@MainActivity, Observer <Int> {
+
+            val x = it
+            if (x!=null){
+                bottomNavigationView.getOrCreateBadge(R.id.miCart).apply {
+                    isVisible = true
+                    number = x
+
+                }
+            }
+            else{
+                bottomNavigationView.getOrCreateBadge(R.id.miCart).apply {
+                    isVisible = false
+                }
+
+            }
+        })
+
 
     }
 

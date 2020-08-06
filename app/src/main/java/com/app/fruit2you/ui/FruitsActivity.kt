@@ -13,12 +13,12 @@ class FruitsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fruits)
 
-        val orangeData = intent.getStringExtra("orange");
+        /*val orangeData = intent.getStringExtra("orange");
         val mangoData = intent.getStringExtra("mango");
         val coconutData = intent.getStringExtra("coconut");
         val strawberryData = intent.getStringExtra("strawberry");
 
-        val image = R.id.fruitImage
+        val image = R.id.fruitImage*/
 
 
 

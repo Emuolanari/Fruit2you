@@ -11,4 +11,6 @@ class Fruit2YouRepository(
     suspend fun delete(item: FruitItem) = db.getFruitsDao().delete(item)
 
     fun getAllShoppingItems() = db.getFruitsDao().getAllShoppingItems()
+
+    fun numberOfCartItems() = db.getFruitsDao().numberOfCartItems()
 }

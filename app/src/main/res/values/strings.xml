@@ -26,7 +26,7 @@
     <string name="orange_image">Orange Image</string>
     <string name="_500_00">500.00</string>
     <string name="orange">Orange</string>
-    <string name="buy_now">Buy Now</string>
+    <string name="buy_now">Add To Cart</string>
     <string name="pcs">10 &#8211; 20 pcs</string>
     <string name="mango_image">mango image</string>
     <string name="coconut_image">coconut image</string>
@@ -52,4 +52,11 @@
     <string name="security_icon">security icon</string>
     <string name="reduce_image">reduce image</string>
     <string name="fruit_image">fruit image</string>
+    <string name="checkout">Checkout</string>
+    <string name="name">Name</string>
+    <string name="amount_n">Amount</string>
+    <string name="delete_icon">delete icon</string>
+    <string name="add_icon">add icon</string>
+    <string name="subtract_icon">subtract icon</string>
+    <string name="n">N</string>
 </resources>

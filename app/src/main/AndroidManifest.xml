@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name = ".Fruit2YouApplication">
+        android:name = ".utilities.FruitsApplication">
         <activity android:name=".ui.PaymentActivity"/>
         <activity android:name=".ui.FruitsActivity" />
         <activity android:name=".ui.MainActivity" />

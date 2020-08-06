@@ -13,6 +13,9 @@ interface FruitsDao {
     @Delete
     suspend fun delete(item: FruitItem)
 
-    @Query("SELECT * FROM shopping_items")
+    @Query("SELECT * FROM shopping_items ORDER BY name DESC")
     fun getAllShoppingItems(): LiveData<List<FruitItem>>
+
+    @Query("SELECT SUM(quantity) FROM shopping_items")
+    fun numberOfCartItems(): LiveData<Int>
 }
