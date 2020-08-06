@@ -36,8 +36,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         cartRecyclerView.adapter = adapter
 
         fun setCurrentFragment(fragment: Fragment){
-            parentFragmentManager?.beginTransaction()?.apply{
-                replace(R.id.flFragment, homeFragment)
+            parentFragmentManager.beginTransaction().apply{
+                replace(R.id.flFragment, fragment)
                 addToBackStack(null)
                 commit()
             }
@@ -53,6 +53,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
         addItems.setOnClickListener {
             setCurrentFragment(homeFragment)
+            activity?.bottomNavigationView?.selectedItemId =  R.id.miHome
         }
 
 
