@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.lifecycle.LifecycleCoroutineScope
 import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -11,6 +12,8 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_change_details.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -44,7 +47,7 @@ class ChangeDetails : AppCompatActivity() {
                 val newPhone = phoneField.text.toString().trim()
                 val newEmail = emailField.text.toString().trim()
                 if (newName.isEmpty()||!newName.matches(nameRegex)){
-                    nameField.error = "Enter your full name"
+                    nameField.error = "Please enter your full name"
                     return@setOnClickListener
                 }
                 if (newPhone.isEmpty()||!newPhone.matches(phoneRegex)){
@@ -52,8 +55,8 @@ class ChangeDetails : AppCompatActivity() {
                     return@setOnClickListener
                 }
 
-                if(newEmail.isEmpty()){
-                    emailField.error = "Email field can't be left empty"
+                if(newEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
+                    emailField.error = "Please enter your valid email address"
                     return@setOnClickListener
                 }
 
@@ -67,27 +70,26 @@ class ChangeDetails : AppCompatActivity() {
                                 auth.signInWithEmailAndPassword(email,password)
                                     .addOnCompleteListener { task ->
                                         if (task.isSuccessful) {
-                                            val user = hashMapOf<String, Any>()
-                                            user["fName"] = newName
-                                            user["email"] = newEmail
-                                            user["phone"] = newPhone
-
-                                            val documentReference = fstore.collection("users").document(userID)
-                                            documentReference.set(user, SetOptions.merge())
-
                                             // Sign in success now update email
                                             auth.currentUser!!.updateEmail(newEmail)
                                                 .addOnCompleteListener{ task ->
                                                     if (task.isSuccessful) {
+                                                        val user = hashMapOf<String, Any>()
+                                                        user["fName"] = newName
+                                                        user["email"] = newEmail
+                                                        user["phone"] = newPhone
+
+                                                        val documentReference = fstore.collection("users").document(userID)
+                                                        documentReference.set(user, SetOptions.merge())
                                                         Toast.makeText(
                                                             applicationContext,"Details updated successfully",
-                                                            Toast.LENGTH_LONG).show()
+                                                            Toast.LENGTH_SHORT).show()
 
                                                     }else{
                                                         // email update failed
                                                         Toast.makeText(
                                                             applicationContext,"Please check details and try again",
-                                                            Toast.LENGTH_LONG).show()
+                                                            Toast.LENGTH_SHORT).show()
                                                     }
                                                 }
                                         } else {
