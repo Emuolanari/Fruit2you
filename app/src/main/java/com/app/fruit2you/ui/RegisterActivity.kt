@@ -97,6 +97,7 @@ class RegisterActivity : AppCompatActivity() {
                             user["fName"] = name
                             user["email"] = mail
                             user["phone"] = phon
+                            user["password"] = passwd
 
                            // fstore.collection("users").add(user)
                             documentReference.set(user)
