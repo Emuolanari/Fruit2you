@@ -2,6 +2,7 @@ package com.app.fruit2you.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -143,7 +144,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
             val message = intent.getStringExtra("response");
             if (resultCode == RavePayActivity.RESULT_SUCCESS) {
-                Toast.makeText(activity, "SUCCESS $message", Toast.LENGTH_LONG).show()
+               //Log.d("TAG", message)
+                Toast.makeText(activity, "payment successful", Toast.LENGTH_LONG).show()
             } else if (resultCode == RavePayActivity.RESULT_ERROR) {
                 Toast.makeText(activity, "ERROR $message", Toast.LENGTH_LONG).show()
             } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
