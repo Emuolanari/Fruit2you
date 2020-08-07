@@ -60,4 +60,11 @@
     <string name="subtract_icon">subtract icon</string>
     <string name="n">N</string>
     <string name="add_items_to_cart">Add Items To Cart</string>
+    <string name="update_phone_number">Update Phone Number</string>
+    <string name="update_name">Update Name</string>
+    <string name="update">Update</string>
+    <string name="update_email_address">Update Email Address</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
 </resources>

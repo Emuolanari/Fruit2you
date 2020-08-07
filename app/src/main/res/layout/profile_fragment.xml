@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -24,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/changePassword" />
 
     <ImageView
         android:id="@+id/profilePic"
@@ -62,7 +61,7 @@
         android:contentDescription="@string/security_icon" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/changeDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -73,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profilePic" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/changePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -81,6 +80,6 @@
         android:text="@string/change_password"
         android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/securityIcon"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/changeDetails" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -91,12 +91,15 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(this,"Sign up successful",Toast.LENGTH_LONG).show()
 
                         GlobalScope.launch {
+                            val userID = auth.currentUser!!.uid
+                            val documentReference = fstore.collection("users").document(userID)
                             val user = hashMapOf<String, Any>()
                             user["fName"] = name
                             user["email"] = mail
                             user["phone"] = phon
 
-                            fstore.collection("users").add(user)
+                           // fstore.collection("users").add(user)
+                            documentReference.set(user)
                         }
 
                         val intent = Intent(this,
