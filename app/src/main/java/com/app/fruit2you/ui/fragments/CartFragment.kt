@@ -139,4 +139,16 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         }
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
+            val message = intent.getStringExtra("response");
+            if (resultCode == RavePayActivity.RESULT_SUCCESS) {
+                Toast.makeText(activity, "SUCCESS $message", Toast.LENGTH_LONG).show()
+            } else if (resultCode == RavePayActivity.RESULT_ERROR) {
+                Toast.makeText(activity, "ERROR $message", Toast.LENGTH_LONG).show()
+            } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
+                Toast.makeText(activity, "CANCELLED $message", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 }

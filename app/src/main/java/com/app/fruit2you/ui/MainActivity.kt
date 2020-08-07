@@ -75,19 +75,6 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             commit()
         }
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-   super.onActivityResult(requestCode, resultCode, intent)
-   if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
-       val message = intent.getStringExtra("response");
-       if (resultCode == RavePayActivity.RESULT_SUCCESS) {
-           Toast.makeText(this, "SUCCESS $message", Toast.LENGTH_LONG).show()
-       } else if (resultCode == RavePayActivity.RESULT_ERROR) {
-           Toast.makeText(this, "ERROR $message", Toast.LENGTH_LONG).show()
-       } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
-           Toast.makeText(this, "CANCELLED $message", Toast.LENGTH_LONG).show()
-       }
-   }
-}
 
    /* override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount

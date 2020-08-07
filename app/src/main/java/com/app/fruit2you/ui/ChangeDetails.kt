@@ -82,7 +82,7 @@ class ChangeDetails : AppCompatActivity() {
                                                         Toast.makeText(
                                                             applicationContext,"Details updated successfully",
                                                             Toast.LENGTH_LONG).show()
-                                                        
+
                                                     }else{
                                                         // email update failed
                                                         Toast.makeText(
