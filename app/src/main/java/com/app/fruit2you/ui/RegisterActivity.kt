@@ -42,7 +42,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun formValidation(){
-        val phoneRegex:Regex ="[0][7-9][0-1]([0-9]{8})".toRegex()
+        val phoneRegex:Regex ="^[0][7-9][0-1]([0-9]{8})$".toRegex()
         val nameRegex = "^[\\p{L} .'-]+$".toRegex()
         val name=fullName.text.toString().trim().toUpperCase(Locale.getDefault())
         val mail = email.text.toString().trim()
