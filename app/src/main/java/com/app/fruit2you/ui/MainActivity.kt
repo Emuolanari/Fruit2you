@@ -2,19 +2,19 @@ package com.app.fruit2you.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.app.fruit2you.R
-import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.fragments.CartFragment
 import com.app.fruit2you.ui.fragments.HomeFragment
 import com.app.fruit2you.ui.fragments.OrderFragment
 import com.app.fruit2you.ui.fragments.ProfileFragment
+import com.flutterwave.raveandroid.RavePayActivity
+import com.flutterwave.raveandroid.rave_java_commons.RaveConstants
 import com.google.firebase.auth.FirebaseAuth
-import com.app.fruit2you.ui.Fruit2YouViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
@@ -75,6 +75,19 @@ class MainActivity : AppCompatActivity(), KodeinAware {
             commit()
         }
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+   super.onActivityResult(requestCode, resultCode, intent)
+   if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
+       val message = intent.getStringExtra("response");
+       if (resultCode == RavePayActivity.RESULT_SUCCESS) {
+           Toast.makeText(this, "SUCCESS $message", Toast.LENGTH_LONG).show()
+       } else if (resultCode == RavePayActivity.RESULT_ERROR) {
+           Toast.makeText(this, "ERROR $message", Toast.LENGTH_LONG).show()
+       } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
+           Toast.makeText(this, "CANCELLED $message", Toast.LENGTH_LONG).show()
+       }
+   }
+}
 
    /* override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount

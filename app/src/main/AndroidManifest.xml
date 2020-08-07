@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.fruit2you">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name = ".utilities.FruitsApplication">
-        <activity android:name=".ui.PaymentActivity"/>
+        <activity android:name=".ui.UpdatePassword"/>
         <activity android:name=".ui.FruitsActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.LoginActivity" />

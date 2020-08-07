@@ -56,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    public override fun onStart() {
+    /*public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-    }
+    }*/
 
     private fun formValidation(){
         val mail = email.text.toString().trim()

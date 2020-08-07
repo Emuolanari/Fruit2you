@@ -4,14 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.*
@@ -83,31 +82,29 @@ class RegisterActivity : AppCompatActivity() {
 
 
         else{
+            progressBar.visibility = View.VISIBLE
             auth.createUserWithEmailAndPassword(mail, passwd)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("TAG", "createUserWithEmail:success")
-                        Toast.makeText(this,"Sign up successful",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"Sign up successful",Toast.LENGTH_LONG).show()
 
-                        /*GlobalScope.launch(Dispatchers.IO) {
-                            val userID = auth.currentUser?.uid
-                            if (userID!=null){
-                                val documentReference: DocumentReference = fstore.collection("users").document(userID)
-                                val user: MutableMap<String, Any> = HashMap()
-                                user["fName"] = name
-                                user["email"] = email
-                                user["phone"] = phone
-                                documentReference.set(user)
-                            }
+                        GlobalScope.launch {
+                            val user = hashMapOf<String, Any>()
+                            user["fName"] = name
+                            user["email"] = mail
+                            user["phone"] = phon
 
+                            fstore.collection("users").add(user)
+                        }
 
-                        }*/
                         val intent = Intent(this,
                             LoginActivity::class.java)
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.
+                        progressBar.visibility = View.INVISIBLE
                         Log.d("TAG", "createUserWithEmail:failure"+ task.exception)
                         Toast.makeText(this, "failed "+task.exception,
                             Toast.LENGTH_LONG).show()

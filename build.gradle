@@ -19,6 +19,10 @@ buildscript {
 
 allprojects {
     repositories {
+
+        maven{
+            url 'https://jitpack.io' //Flutterwave repository
+        }
         google()
         jcenter()
         

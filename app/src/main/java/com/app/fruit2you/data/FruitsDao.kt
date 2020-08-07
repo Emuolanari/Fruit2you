@@ -18,4 +18,8 @@ interface FruitsDao {
 
     @Query("SELECT SUM(quantity) FROM shopping_items")
     fun numberOfCartItems(): LiveData<Int>
+
+    @Query("SELECT SUM(amount) FROM shopping_items")
+    fun priceOfCartItems(): LiveData<Int>
+
 }

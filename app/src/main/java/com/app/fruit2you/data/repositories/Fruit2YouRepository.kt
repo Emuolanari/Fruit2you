@@ -13,4 +13,7 @@ class Fruit2YouRepository(
     fun getAllShoppingItems() = db.getFruitsDao().getAllShoppingItems()
 
     fun numberOfCartItems() = db.getFruitsDao().numberOfCartItems()
+
+    fun priceOfCartItems() = db.getFruitsDao().priceOfCartItems()
+
 }

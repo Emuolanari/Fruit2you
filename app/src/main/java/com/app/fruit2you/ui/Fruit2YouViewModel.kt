@@ -8,13 +8,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class Fruit2YouViewModel(private val repository: Fruit2YouRepository): ViewModel() {
-    fun upsert(fruit: FruitItem) = CoroutineScope(Dispatchers.Main).launch {
+    fun upsert(fruit: FruitItem) = CoroutineScope(Dispatchers.IO).launch {
         repository.upsert(fruit)
     }
-    fun delete(fruit: FruitItem) = CoroutineScope(Dispatchers.Main).launch {
+    fun delete(fruit: FruitItem) = CoroutineScope(Dispatchers.IO).launch {
         repository.delete(fruit)
     }
 
     fun getAllShoppingItems() = repository.getAllShoppingItems()
     fun numberOfCartItems() = repository.numberOfCartItems()
+    fun priceOfCartItems() = repository.priceOfCartItems()
 }
