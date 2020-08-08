@@ -63,7 +63,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         val encryptionKey = "FLWSECK_TESTd17a7a57aacf"
         val narration = "payment for food"
         var txRef: String
-        val country = "NG"
+        //val country = "NG"
         val currency = "NGN"
 
         val homeFragment = HomeFragment()
@@ -145,6 +145,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
 
         checkout.setOnClickListener {
+            checkout.isEnabled = false
             makePayment()
         }
 
@@ -161,5 +162,10 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 Toast.makeText(activity, "CANCELLED $message", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkout.isEnabled = true
     }
 }

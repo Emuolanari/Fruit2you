@@ -6,12 +6,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.app.fruit2you.ui.ChangeDetails
 import com.app.fruit2you.R
+import com.app.fruit2you.ui.ChangeDetails
 import com.app.fruit2you.ui.LoginActivity
 import com.app.fruit2you.ui.UpdatePassword
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.profile_fragment.*
+
 
 class ProfileFragment: Fragment(R.layout.profile_fragment) {
     private val imgRequestCode = 123
@@ -26,17 +27,20 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
         }
 
         signout.setOnClickListener {
+            signout.isEnabled =false
             auth.signOut()
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
 
         changeDetails.setOnClickListener {
+            changeDetails.isEnabled = false
             val intent = Intent(activity, ChangeDetails::class.java)
             startActivity(intent)
         }
 
         changePassword.setOnClickListener {
+            changePassword.isEnabled = false
             val intent = Intent(activity, UpdatePassword::class.java)
             startActivity(intent)
         }
@@ -46,6 +50,16 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
         if(requestCode==imgRequestCode && resultCode==RESULT_OK && data != null){
             val imageData: Uri? = data.data
             profilePic.setImageURI(imageData)
+
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        changePassword.isEnabled = true
+        signout.isEnabled =true
+        changeDetails.isEnabled = true
+    }
+
+
 }
