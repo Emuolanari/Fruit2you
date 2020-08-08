@@ -2,7 +2,7 @@ package com.app.fruit2you.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -19,11 +19,8 @@ import com.flutterwave.raveandroid.RaveUiManager
 import com.flutterwave.raveandroid.rave_java_commons.RaveConstants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.cart_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -83,7 +80,6 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 txRef = currentTimeMillis().toString()+"_"+auth.currentUser?.uid.toString()
 
                 RaveUiManager(this).setAmount(totalAmount.toDouble())
-                    .setCountry(country)
                     .setCurrency(currency)
                     .setPhoneNumber(phone, true)
                      .setEmail(email)
@@ -120,8 +116,21 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             if (x==null){
                 checkout.visibility =  View.GONE
                 addItems.visibility = View.VISIBLE
+                address.visibility = View.GONE
+                addresstitle.visibility = View.GONE
             }
         })
+
+        address.setOnTouchListener { v, event ->
+            v.parent.requestDisallowInterceptTouchEvent(true)
+
+            when (event.action and MotionEvent.ACTION_MASK) {
+                MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
+            }
+            false
+        }
+
+
 
         addItems.setOnClickListener {
             setCurrentFragment(homeFragment)
@@ -142,7 +151,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
-            val message = intent.getStringExtra("response");
+            val message = intent.getStringExtra("response")
             if (resultCode == RavePayActivity.RESULT_SUCCESS) {
                //Log.d("TAG", message)
                 Toast.makeText(activity, "payment successful", Toast.LENGTH_LONG).show()

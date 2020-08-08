@@ -69,6 +69,7 @@
             android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:background="@drawable/edittext"
+            android:maxLines="1"
             android:ems="10"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,6 +105,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext"
                 android:importantForAutofill="no" />
