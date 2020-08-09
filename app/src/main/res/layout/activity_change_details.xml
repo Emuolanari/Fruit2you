@@ -97,7 +97,6 @@
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:textStyle="bold"
         app:backgroundTint="#FCB51D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

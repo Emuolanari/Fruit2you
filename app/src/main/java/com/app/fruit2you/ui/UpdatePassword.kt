@@ -28,15 +28,15 @@ class UpdatePassword : AppCompatActivity() {
 
 
 
-            update.setOnClickListener {
-                if(auth.currentUser!=null){
-                    val oldPassword = currentPassword.text.toString().trim()
-                    val updatedPassword = newPassword.text.toString().trim()
-                    val userId = auth.currentUser!!.uid
-                    val documentRef = fstore.collection("users").document(userId)
-                    documentRef.addSnapshotListener {snapshot, e->
-                        fstorePassword = snapshot?.getString("password").toString().trim()
-                    }
+        update.setOnClickListener {
+            if(auth.currentUser!=null){
+                val oldPassword = currentPassword.text.toString().trim()
+                val updatedPassword = newPassword.text.toString().trim()
+                val userId = auth.currentUser!!.uid
+                val documentRef = fstore.collection("users").document(userId)
+                documentRef.addSnapshotListener {snapshot, e->
+                    fstorePassword = snapshot?.getString("password").toString().trim()
+                }
                 if(oldPassword!=fstorePassword){
                     currentPassword.error = "Old password incorrect"
                     return@setOnClickListener
