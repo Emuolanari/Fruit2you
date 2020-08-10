@@ -14,8 +14,10 @@ import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.Fruit2YouViewModel
 import com.app.fruit2you.ui.Fruit2YouViewModelFactory
 import com.app.fruit2you.utilities.FruitsAdapter
+import com.app.fruit2you.utilities.MetaData
 import com.flutterwave.raveandroid.RavePayActivity
 import com.flutterwave.raveandroid.RaveUiManager
+import com.flutterwave.raveandroid.rave_java_commons.Meta
 import com.flutterwave.raveandroid.rave_java_commons.RaveConstants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
@@ -35,13 +37,15 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     private lateinit var fstore: FirebaseFirestore
     private var phone: String = ""
     private var email: String = ""
-    private var fName: String = ""
+    private var firstName=""
+    private var lastName=""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
         fstore = FirebaseFirestore.getInstance()
         val userID = auth.currentUser?.uid
+
 
         if (userID!=null){
             val documentReference: DocumentReference = fstore.collection("users").document(userID)
@@ -50,7 +54,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     phone= documentSnapshot.getString("phone").toString()
                 }
                 if (documentSnapshot != null) {
-                    fName = documentSnapshot.getString("fName").toString()
+                    val fName = documentSnapshot.getString("fName").toString()
                 }
                 if (documentSnapshot != null) {
                     email = documentSnapshot.getString("email").toString()
@@ -61,7 +65,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
         val publicKey = "FLWPUBK_TEST-54e64b93d20fc322f03ea1e51303634d-X"
         val encryptionKey = "FLWSECK_TESTd17a7a57aacf"
-        val narration = "payment for food"
+        val narration = "payment for fruit"
         var txRef: String
         //val country = "NG"
         val currency = "NGN"
@@ -73,18 +77,18 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         cartRecyclerView.adapter = adapter
 
 
-
-        fun makePayment(){
+        fun makePayment(a:Meta){
             viewModel.priceOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
                 val totalAmount = it
                 txRef = currentTimeMillis().toString()+"_"+auth.currentUser?.uid.toString()
+
 
                 RaveUiManager(this).setAmount(totalAmount.toDouble())
                     .setCurrency(currency)
                     .setPhoneNumber(phone, true)
                      .setEmail(email)
-                    //.setfName(fName)
-                    //.setlName(lName)
+                    //.setfName(firstName)
+                    //.setlName(lastName)
                     .acceptUssdPayments(true)
                     .setNarration(narration)
                     .setPublicKey(publicKey)
@@ -95,6 +99,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     .acceptMpesaPayments(false)
                     .acceptGHMobileMoneyPayments(false)
                     .onStagingEnv(false)
+                    .setMeta(mutableListOf(a))
                     //.allowSaveCardFeature(true)
                     //.withTheme(R.style.DefaultPayTheme)
                     .initialize()
@@ -145,8 +150,17 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
 
         checkout.setOnClickListener {
+            val deliveryAddress = address.text.toString().trim()
             checkout.isEnabled = false
-            makePayment()
+            if(deliveryAddress.isNotEmpty()){
+                val a = Meta("address",deliveryAddress)
+                makePayment(a)
+            }
+            else{
+                Toast.makeText(activity,"Please enter your delivery address",Toast.LENGTH_LONG).show()
+                checkout.isEnabled = true
+            }
+
         }
 
     }

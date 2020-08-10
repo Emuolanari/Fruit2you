@@ -12,10 +12,6 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import kotlinx.android.synthetic.main.activity_change_details.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.util.*
 
 class ChangeDetails : AppCompatActivity() {
@@ -40,29 +36,28 @@ class ChangeDetails : AppCompatActivity() {
                 emailField.setText(snapshot?.getString("email"))
                 phoneField.setText(snapshot?.getString("phone"))
 
-            }
 
-            update.setOnClickListener {
-                val newName = nameField.text.toString().trim().toUpperCase(Locale.getDefault())
-                val newPhone = phoneField.text.toString().trim()
-                val newEmail = emailField.text.toString().trim()
-                if (newName.isEmpty()||!newName.matches(nameRegex)){
-                    nameField.error = "Please enter your full name"
-                    return@setOnClickListener
-                }
-                if (newPhone.isEmpty()||!newPhone.matches(phoneRegex)){
-                    phoneField.error = "Please enter your correct phone number"
-                    return@setOnClickListener
-                }
+                update.setOnClickListener {
+                    val newName = nameField.text.toString().trim().toUpperCase(Locale.getDefault())
+                    val newPhone = phoneField.text.toString().trim()
+                    val newEmail = emailField.text.toString().trim()
+                    if (newName.isEmpty()||!newName.matches(nameRegex)){
+                        nameField.error = "Please enter your full name"
+                        return@setOnClickListener
+                    }
+                    if (newPhone.isEmpty()||!newPhone.matches(phoneRegex)){
+                        phoneField.error = "Please enter your correct phone number"
+                        return@setOnClickListener
+                    }
 
-                if(newEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
-                    emailField.error = "Please enter your valid email address"
-                    return@setOnClickListener
-                }
+                    if(newEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
+                        emailField.error = "Please enter your valid email address"
+                        return@setOnClickListener
+                    }
 
-                else{
-                    GlobalScope.launch {
-                        val userID = auth.currentUser!!.uid
+                    else{
+                        val userId = auth.currentUser!!.uid
+                        val documentRef = fstore.collection("users").document(userId)
                         documentRef.addSnapshotListener {snapshot, e->
                             val email = snapshot?.getString("email")
                             val password = snapshot?.getString("password")
@@ -79,32 +74,25 @@ class ChangeDetails : AppCompatActivity() {
                                                         user["email"] = newEmail
                                                         user["phone"] = newPhone
 
-                                                        val documentReference = fstore.collection("users").document(userID)
+                                                        val documentReference = fstore.collection("users").document(userId)
                                                         documentReference.set(user, SetOptions.merge())
-                                                        Toast.makeText(
-                                                            applicationContext,"Details updated successfully",
-                                                            Toast.LENGTH_SHORT).show()
-
+                                                        Toast.makeText(this,"Details updated successfully", Toast.LENGTH_SHORT).show()
+                                                        return@addOnCompleteListener
                                                     }else{
                                                         // email update failed
-                                                        Toast.makeText(
-                                                            applicationContext,"Please check details and try again",
-                                                            Toast.LENGTH_SHORT).show()
+                                                        Toast.makeText(this,"Please check details and try again", Toast.LENGTH_SHORT).show()
                                                     }
                                                 }
                                         } else {
-                                            Toast.makeText(
-                                                applicationContext,"Authentication failed",
-                                                Toast.LENGTH_LONG).show()
+                                            Toast.makeText(applicationContext,"Authentication failed", Toast.LENGTH_LONG).show()
                                         }
                                     }
 
                             }
 
                         }
-
                     }
-
+                    return@setOnClickListener
                 }
             }
         }

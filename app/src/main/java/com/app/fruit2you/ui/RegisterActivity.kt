@@ -113,8 +113,6 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(this, "failed "+task.exception,
                             Toast.LENGTH_LONG).show()
                     }
-
-                    // ...
                 }
         }
 
