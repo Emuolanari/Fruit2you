@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.fruit2you.R
 import com.app.fruit2you.data.database.entities.FruitItem
@@ -69,13 +69,13 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         val currency = "NGN"
 
         val homeFragment = HomeFragment()
-        val viewModel = ViewModelProviders.of(this, factory).get(Fruit2YouViewModel::class.java)
+        val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
         val adapter = FruitsAdapter(listOf(), viewModel)
         cartRecyclerView.layoutManager = LinearLayoutManager(activity)
         cartRecyclerView.adapter = adapter
 
 
-        fun makePayment(a:Meta){
+        fun makePayment(a:Meta, b:Meta){
             viewModel.priceOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
                 val totalAmount = it
                 txRef = currentTimeMillis().toString()+"_"+auth.currentUser?.uid.toString()
@@ -97,7 +97,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     .acceptMpesaPayments(false)
                     .acceptGHMobileMoneyPayments(false)
                     .onStagingEnv(false)
-                    .setMeta(mutableListOf(a))
+                    .setMeta(mutableListOf(a,b))
                     //.allowSaveCardFeature(true)
                     //.withTheme(R.style.DefaultPayTheme)
                     .initialize()
@@ -151,8 +151,11 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             val deliveryAddress = address.text.toString().trim()
             checkout.isEnabled = false
             if(deliveryAddress.isNotEmpty()){
+                val separator = "-"
                 val a = Meta("address",deliveryAddress)
-                makePayment(a)
+                val orderString = viewModel.getAllShoppingItems().value?.joinToString(separator)
+                val b = Meta("bought items",orderString)
+                makePayment(a,b)
             }
             else{
                 Toast.makeText(activity,"Please enter your delivery address",Toast.LENGTH_LONG).show()

@@ -6,14 +6,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.app.fruit2you.R
 import com.app.fruit2you.ui.fragments.CartFragment
 import com.app.fruit2you.ui.fragments.HomeFragment
 import com.app.fruit2you.ui.fragments.OrderFragment
 import com.app.fruit2you.ui.fragments.ProfileFragment
-import com.flutterwave.raveandroid.RavePayActivity
-import com.flutterwave.raveandroid.rave_java_commons.RaveConstants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import org.kodein.di.KodeinAware
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity(), KodeinAware {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel = ViewModelProviders.of(this, factory).get(Fruit2YouViewModel::class.java)
+        val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
         auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_main)
 
