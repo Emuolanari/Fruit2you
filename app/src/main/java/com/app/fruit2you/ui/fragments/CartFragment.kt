@@ -14,7 +14,6 @@ import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.Fruit2YouViewModel
 import com.app.fruit2you.ui.Fruit2YouViewModelFactory
 import com.app.fruit2you.utilities.FruitsAdapter
-import com.app.fruit2you.utilities.MetaData
 import com.flutterwave.raveandroid.RavePayActivity
 import com.flutterwave.raveandroid.RaveUiManager
 import com.flutterwave.raveandroid.rave_java_commons.Meta
