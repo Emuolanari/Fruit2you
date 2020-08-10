@@ -2,7 +2,6 @@ package com.app.fruit2you.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import androidx.room.Dao
 import com.app.fruit2you.data.database.entities.FruitItem
 
 @Dao
@@ -22,4 +21,6 @@ interface FruitsDao {
     @Query("SELECT SUM(amount) FROM shopping_items")
     fun priceOfCartItems(): LiveData<Int>
 
+    @Query("DELETE FROM shopping_items")
+    fun nukeTable()
 }

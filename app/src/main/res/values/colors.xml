@@ -3,4 +3,5 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#FAFAFA</color>
     <color name="colorAccent">#F47A20</color>
+    <color name="flutterwave">#44AD65</color>
 </resources>

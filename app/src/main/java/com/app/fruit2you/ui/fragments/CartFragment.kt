@@ -73,9 +73,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         val adapter = FruitsAdapter(listOf(), viewModel)
         cartRecyclerView.layoutManager = LinearLayoutManager(activity)
         cartRecyclerView.adapter = adapter
-
-
-        fun makePayment(a:Meta, b:Meta){
+        
+        fun makePayment(a:Meta){
             viewModel.priceOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
                 val totalAmount = it
                 txRef = currentTimeMillis().toString()+"_"+auth.currentUser?.uid.toString()
@@ -97,9 +96,9 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     .acceptMpesaPayments(false)
                     .acceptGHMobileMoneyPayments(false)
                     .onStagingEnv(false)
-                    .setMeta(mutableListOf(a,b))
+                    .setMeta(mutableListOf(a))
                     //.allowSaveCardFeature(true)
-                    //.withTheme(R.style.DefaultPayTheme)
+                    .withTheme(R.style.DefaultTheme)
                     .initialize()
             })
 
@@ -113,6 +112,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 commit()
             }
         }
+
         viewModel.numberOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
 
             val x = it
@@ -151,14 +151,11 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             val deliveryAddress = address.text.toString().trim()
             checkout.isEnabled = false
             if(deliveryAddress.isNotEmpty()){
-                val separator = "-"
                 val a = Meta("address",deliveryAddress)
-                val orderString = viewModel.getAllShoppingItems().value?.joinToString(separator)
-                val b = Meta("bought items",orderString)
-                makePayment(a,b)
+                makePayment(a)
             }
             else{
-                Toast.makeText(activity,"Please enter your delivery address",Toast.LENGTH_LONG).show()
+                Toast.makeText(activity,"Please enter your delivery address",Toast.LENGTH_SHORT).show()
                 checkout.isEnabled = true
             }
 
@@ -177,6 +174,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 Toast.makeText(activity, "CANCELLED $message", Toast.LENGTH_LONG).show()
             }
         }
+
     }
 
     override fun onResume() {
