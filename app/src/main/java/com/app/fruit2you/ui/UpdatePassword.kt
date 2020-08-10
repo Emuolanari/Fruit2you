@@ -36,11 +36,13 @@ class UpdatePassword : AppCompatActivity() {
 
 
             update.setOnClickListener {
+                update.isEnabled = false
                 val oldPassword = currentPassword.text.toString().trim()
                 val updatedPassword = newPassword.text.toString().trim()
 
                 if(updatedPassword.length<6){
                     newPassword.error = "Password must be at least 6 characters"
+                    update.isEnabled = true
                     return@setOnClickListener
                 }
 
@@ -62,10 +64,12 @@ class UpdatePassword : AppCompatActivity() {
 
                                         Toast.makeText(this,"Password updated successfully",Toast.LENGTH_SHORT)
                                             .show()
+                                        update.isEnabled = true
                                     } else {
                                         Toast.makeText(this,"Password not updated, check details and try again",
                                             Toast.LENGTH_SHORT)
                                             .show()
+                                        update.isEnabled = true
                                     }
 
                             }
@@ -73,10 +77,11 @@ class UpdatePassword : AppCompatActivity() {
                             Toast.makeText(this,"Authentication failed",
                                 Toast.LENGTH_SHORT)
                                 .show()
+                            update.isEnabled = true
                         }
 
                     }
-
+                    update.isEnabled = true
                 }
             }
         }

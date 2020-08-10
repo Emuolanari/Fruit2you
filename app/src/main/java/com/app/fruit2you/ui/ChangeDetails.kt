@@ -47,6 +47,7 @@ class ChangeDetails : AppCompatActivity() {
         }
 
         update.setOnClickListener {
+            update.isEnabled = false
             val newName = nameField.text.toString().trim().toUpperCase(Locale.getDefault())
             val newPhone = phoneField.text.toString().trim()
             val newEmail = emailField.text.toString().trim()
@@ -56,11 +57,13 @@ class ChangeDetails : AppCompatActivity() {
             }
             if (newPhone.isEmpty()||!newPhone.matches(phoneRegex)){
                 phoneField.error = "Please enter your correct phone number"
+                update.isEnabled = true
                 return@setOnClickListener
             }
 
             if(newEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
                 emailField.error = "Please enter your valid email address"
+                update.isEnabled = true
                 return@setOnClickListener
             }
 
@@ -69,7 +72,7 @@ class ChangeDetails : AppCompatActivity() {
                 val userId = auth.currentUser!!.uid
                 val credential: AuthCredential = EmailAuthProvider
                     .getCredential(emailText, passWord)
-                
+
                 thisUser?.reauthenticate(credential)?.addOnCompleteListener {task->
 
                     if (task.isSuccessful) {
@@ -84,10 +87,12 @@ class ChangeDetails : AppCompatActivity() {
                                 documentReference.set(user, SetOptions.merge())
                                 Toast.makeText(this,"Details updated successfully",Toast.LENGTH_SHORT)
                                     .show()
+                                update.isEnabled = true
                             } else {
                                 Toast.makeText(this,"Error, details not updated, check details and try again",
                                     Toast.LENGTH_SHORT)
                                     .show()
+                                update.isEnabled = true
                             }
 
                         }
@@ -95,11 +100,14 @@ class ChangeDetails : AppCompatActivity() {
                         Toast.makeText(this,"Authentication failed",
                             Toast.LENGTH_SHORT)
                             .show()
+                        update.isEnabled = true
                     }
 
                 }
+
             }
         }
+
 
     }
 }
