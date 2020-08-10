@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,8 +22,10 @@ import com.flutterwave.raveandroid.rave_java_commons.RaveConstants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.core.ActivityScope
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.cart_fragment.*
+import kotlinx.coroutines.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -56,6 +59,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     fName = nameArray[0]
                     lName = nameArray[1]
                     email = documentSnapshot.getString("email").toString()
+                    phone = documentSnapshot.getString("phone").toString()
                 }
             }
         }
@@ -73,7 +77,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         val adapter = FruitsAdapter(listOf(), viewModel)
         cartRecyclerView.layoutManager = LinearLayoutManager(activity)
         cartRecyclerView.adapter = adapter
-        
+
         fun makePayment(a:Meta){
             viewModel.priceOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
                 val totalAmount = it
@@ -164,10 +168,15 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
+            val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
             val message = intent.getStringExtra("response")
             if (resultCode == RavePayActivity.RESULT_SUCCESS) {
                //Log.d("TAG", message)
                 Toast.makeText(activity, "payment successful", Toast.LENGTH_LONG).show()
+                GlobalScope.launch(Dispatchers.IO){
+                    delay(2000)
+                    viewModel.nukeTable()
+                }
             } else if (resultCode == RavePayActivity.RESULT_ERROR) {
                 Toast.makeText(activity, "ERROR $message", Toast.LENGTH_LONG).show()
             } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
