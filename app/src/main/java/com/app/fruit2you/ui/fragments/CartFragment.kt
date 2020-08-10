@@ -36,8 +36,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     private lateinit var fstore: FirebaseFirestore
     private var phone: String = ""
     private var email: String = ""
-    private var firstName=""
-    private var lastName=""
+    private var fName=""
+    private var lName=""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,11 +51,10 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             documentReference.addSnapshotListener { documentSnapshot, e ->
                 if (documentSnapshot != null) {
                     phone= documentSnapshot.getString("phone").toString()
-                }
-                if (documentSnapshot != null) {
-                    val fName = documentSnapshot.getString("fName").toString()
-                }
-                if (documentSnapshot != null) {
+                    val fullName = documentSnapshot.getString("fName").toString()
+                    val nameArray = fullName.split(" ")
+                    fName = nameArray[0]
+                    lName = nameArray[1]
                     email = documentSnapshot.getString("email").toString()
                 }
             }
@@ -86,8 +85,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     .setCurrency(currency)
                     .setPhoneNumber(phone, true)
                      .setEmail(email)
-                    //.setfName(firstName)
-                    //.setlName(lastName)
+                    .setfName(fName)
+                    .setlName(lName)
                     .acceptUssdPayments(true)
                     .setNarration(narration)
                     .setPublicKey(publicKey)
