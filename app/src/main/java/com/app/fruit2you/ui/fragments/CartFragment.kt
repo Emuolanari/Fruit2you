@@ -68,7 +68,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         val encryptionKey = "FLWSECK_TESTd17a7a57aacf"
         val narration = "payment for fruit"
         var txRef: String
-        //val country = "NG"
+        //val country = "NG" deprecated
         val currency = "NGN"
 
         val homeFragment = HomeFragment()
