@@ -20,7 +20,6 @@
     <string name="welcome_back">Welcome back!</string>
     <string name="design">header image</string>
     <string name="description">Show/hide password</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="available_products">Available Products</string>
     <string name="orange_image">Orange Image</string>
@@ -63,6 +62,7 @@
     <string name="update_phone_number">Update Phone Number</string>
     <string name="update_name">Update Name</string>
     <string name="update">Update</string>
+    <string name="email_address">Email Address</string>
     <string name="update_email_address">Update Email Address</string>
     <string name="enter_new_password">Enter New Password</string>
     <string name="current_password">Enter Current Password</string>
