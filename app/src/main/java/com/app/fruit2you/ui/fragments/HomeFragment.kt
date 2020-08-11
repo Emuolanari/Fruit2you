@@ -5,10 +5,9 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.app.fruit2you.R
 import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.Fruit2YouViewModel
@@ -16,7 +15,6 @@ import com.app.fruit2you.ui.Fruit2YouViewModelFactory
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
@@ -27,10 +25,9 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val auth = FirebaseAuth.getInstance()
-        val viewModel = ViewModelProviders.of(this, factory).get(Fruit2YouViewModel::class.java)
+        //val auth = FirebaseAuth.getInstance()
+        val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
 
-        val mAlertDialog = getView()?.findViewById<Button>(R.id.buyO)
         buyM.setOnClickListener {
             val mAlertDialog= AlertDialog.Builder(activity)
             val quantity = EditText(activity)
@@ -52,7 +49,6 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
 
         }
 
-        val oAlertDialog = getView()?.findViewById<Button>(R.id.buyO)
         buyO.setOnClickListener {
             val oAlertDialog= AlertDialog.Builder(activity)
             val quantity = EditText(activity)
@@ -72,6 +68,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             }
             oAlertDialog.create().show()
         }
+
         buyS.setOnClickListener {
             val sAlertDialog= AlertDialog.Builder(activity)
             val quantity = EditText(activity)
@@ -94,7 +91,6 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
 
         }
 
-        val cAlertDialog = getView()?.findViewById<Button>(R.id.buyO)
         buyC.setOnClickListener {
             val cAlertDialog= AlertDialog.Builder(activity)
             val quantity = EditText(activity)
