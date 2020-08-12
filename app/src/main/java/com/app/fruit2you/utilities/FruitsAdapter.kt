@@ -37,7 +37,7 @@ class FruitsAdapter(
         else if(curFruitItem.name=="coconut pack"){
             myImage.setImageResource(R.drawable.coconut)
         }
-        else if(curFruitItem.name=="mangoes pack"){
+        else if(curFruitItem.name=="mango pack"){
             myImage.setImageResource(R.drawable.mangoes)
         }
         else{

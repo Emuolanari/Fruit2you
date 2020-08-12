@@ -38,7 +38,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             mAlertDialog.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int ->
                 val qty: Int = quantity.text.toString().toInt()
                 val amount:Int = qty * 500
-                val fruit= FruitItem("mangoes pack",amount, qty)
+                val fruit= FruitItem("mango pack",amount, qty)
                 viewModel.upsert(fruit)
             }
             mAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->
@@ -59,7 +59,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             oAlertDialog.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int ->
                 val qty: Int = quantity.text.toString().toInt()
                 val amount:Int = qty * 500
-                val fruit= FruitItem("oranges pack",amount, qty)
+                val fruit= FruitItem("orange pack",amount, qty)
                 viewModel.upsert(fruit)
             }
             oAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->

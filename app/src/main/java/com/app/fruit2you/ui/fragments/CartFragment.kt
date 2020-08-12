@@ -1,10 +1,14 @@
 package com.app.fruit2you.ui.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,10 +25,8 @@ import com.flutterwave.raveandroid.rave_java_commons.RaveConstants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.core.ActivityScope
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.cart_fragment.*
-import kotlinx.coroutines.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -100,7 +102,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     .acceptGHMobileMoneyPayments(false)
                     .onStagingEnv(false)
                     .setMeta(mutableListOf(a))
-                    //.allowSaveCardFeature(true)
+                    .allowSaveCardFeature(true)
                     .withTheme(R.style.DefaultTheme)
                     .initialize()
             })
@@ -116,6 +118,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             }
         }
 
+
         viewModel.numberOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
 
             val x = it
@@ -127,15 +130,14 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             }
         })
 
+
         address.setOnTouchListener { v, event ->
             v.parent.requestDisallowInterceptTouchEvent(true)
-
             when (event.action and MotionEvent.ACTION_MASK) {
                 MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
             }
             false
         }
-
 
 
         addItems.setOnClickListener {
