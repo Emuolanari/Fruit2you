@@ -98,10 +98,10 @@
 
     <ImageView
         android:id="@+id/fruitImage"
-        android:layout_width="64dp"
-        android:layout_height="40dp"
+        android:layout_width="87dp"
+        android:layout_height="54dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/fruit_image"
         app:layout_constraintStart_toEndOf="@+id/ivDelete"
         app:layout_constraintTop_toBottomOf="@+id/tvName"
