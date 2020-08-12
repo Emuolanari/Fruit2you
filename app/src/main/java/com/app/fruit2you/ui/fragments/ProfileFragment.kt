@@ -31,7 +31,7 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val userId = auth.currentUser?.uid
+        //val userId = auth.currentUser?.uid
 
         if (user!!.photoUrl != null) {
             Glide.with(this)
@@ -44,6 +44,15 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(Intent.createChooser(intent,"pick an image"), imgRequestCode)
+        }
+
+        detailsIcon.setOnClickListener {
+            val intent = Intent(activity,ChangeDetails::class.java)
+            startActivity(intent)
+        }
+        securityIcon.setOnClickListener {
+            val intent = Intent(activity,UpdatePassword::class.java)
+            startActivity(intent)
         }
 
         signout.setOnClickListener {

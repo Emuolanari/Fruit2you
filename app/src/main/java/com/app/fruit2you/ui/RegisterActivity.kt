@@ -50,18 +50,18 @@ class RegisterActivity : AppCompatActivity() {
         val passwd = password.text.toString().trim()
 
         if(TextUtils.isEmpty(name)||!name.matches(nameRegex)){
-            fullName.error = "Please enter your full name"
+            fullName.error = "Enter your full name"
             return
         }
 
 
         if(TextUtils.isEmpty(mail)) {
-            email.error = "Please enter a valid email address"
+            email.error = "Enter your valid email address"
             return
         }
 
         if (TextUtils.isEmpty(phon)||!phon.matches(phoneRegex)) {
-            phone.error = "Please enter your phone number"
+            phone.error = "Enter your correct phone number starting with 0"
             return
         }
 
@@ -72,11 +72,6 @@ class RegisterActivity : AppCompatActivity() {
 
         if(passwd.length<6){
             password.error= "Please enter a password up to 6 characters"
-            return
-        }
-
-        if(phon.length!=11) {
-            phone.error = "Please enter valid phone number starting with 0 e.g 080..."
             return
         }
 

@@ -52,17 +52,17 @@ class ChangeDetails : AppCompatActivity() {
             val newPhone = phoneField.text.toString().trim()
             val newEmail = emailField.text.toString().trim()
             if (newName.isEmpty()||!newName.matches(nameRegex)){
-                nameField.error = "Please enter your full name"
+                nameField.error = "Enter your full name"
                 return@setOnClickListener
             }
             if (newPhone.isEmpty()||!newPhone.matches(phoneRegex)){
-                phoneField.error = "Please enter your correct phone number"
+                phoneField.error = "Enter your correct phone number starting with 0"
                 update.isEnabled = true
                 return@setOnClickListener
             }
 
             if(newEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(newEmail).matches()){
-                emailField.error = "Please enter your valid email address"
+                emailField.error = "Enter your valid email address"
                 update.isEnabled = true
                 return@setOnClickListener
             }
