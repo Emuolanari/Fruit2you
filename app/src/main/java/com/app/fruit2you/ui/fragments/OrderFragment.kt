@@ -1,7 +1,6 @@
 package com.app.fruit2you.ui.fragments
 
-import android.R.attr.x
-import android.R.attr.y
+
 import android.os.Bundle
 import android.util.Log
 import android.view.View
