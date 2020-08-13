@@ -27,6 +27,10 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.cart_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
@@ -169,21 +173,36 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
-            //val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
+            val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
+
             val message = intent.getStringExtra("response")
             if (resultCode == RavePayActivity.RESULT_SUCCESS) {
-                Toast.makeText(activity, "payment successful", Toast.LENGTH_LONG).show()
-                /*GlobalScope.launch(Dispatchers.IO){
+                Toast.makeText(activity, "payment successful", Toast.LENGTH_SHORT).show()
+                GlobalScope.launch(Dispatchers.IO){
+                    delay(2000L)
                     viewModel.nukeTable()
-                }*/
+                    val cartFragment = CartFragment()
+                    fun setCurrentFragment(fragment: Fragment){
+                        parentFragmentManager.beginTransaction().apply{
+                            replace(R.id.flFragment, fragment)
+                            addToBackStack(null)
+                            commit()
+                        }
+                    }
+                    setCurrentFragment(cartFragment)
+                }
             } else if (resultCode == RavePayActivity.RESULT_ERROR) {
-                Toast.makeText(activity, "ERROR $message", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "ERROR $message", Toast.LENGTH_SHORT).show()
             } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
-                Toast.makeText(activity, "CANCELLED $message", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "CANCELLED $message", Toast.LENGTH_SHORT).show()
             }
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, intent)
         }
 
     }
+
 
     override fun onResume() {
         super.onResume()
