@@ -181,16 +181,17 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 GlobalScope.launch(Dispatchers.IO){
                     delay(2000L)
                     viewModel.nukeTable()
-                    val cartFragment = CartFragment()
-                    fun setCurrentFragment(fragment: Fragment){
-                        parentFragmentManager.beginTransaction().apply{
-                            replace(R.id.flFragment, fragment)
-                            addToBackStack(null)
-                            commit()
-                        }
-                    }
-                    setCurrentFragment(cartFragment)
                 }
+                val orderFragment = OrderFragment()
+                fun setCurrentFragment(fragment: Fragment){
+                    parentFragmentManager.beginTransaction().apply{
+                        replace(R.id.flFragment, fragment)
+                        addToBackStack(null)
+                        commit()
+                    }
+                }
+                setCurrentFragment(orderFragment)
+                activity?.bottomNavigationView?.selectedItemId =  R.id.miOrder
             } else if (resultCode == RavePayActivity.RESULT_ERROR) {
                 Toast.makeText(activity, "ERROR $message", Toast.LENGTH_SHORT).show()
             } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
