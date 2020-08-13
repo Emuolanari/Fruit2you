@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
+import com.scottyab.aescrypt.AESCrypt
 import kotlinx.android.synthetic.main.activity_login.*
 import java.security.AccessController.getContext
 
@@ -69,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
     private fun formValidation(){
         val mail = email.text.toString().trim()
         val passwd = password.text.toString().trim()
+        val encryptedPasswd = AESCrypt.encrypt(passwd,passwd)
 
         if(TextUtils.isEmpty(passwd))
             password.error= "Please enter your password"
@@ -78,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         else{
-            auth.signInWithEmailAndPassword(mail, passwd)
+            auth.signInWithEmailAndPassword(mail, encryptedPasswd)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val intent = Intent(this, MainActivity::class.java)

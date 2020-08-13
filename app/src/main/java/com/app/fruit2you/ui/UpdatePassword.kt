@@ -11,6 +11,7 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.scottyab.aescrypt.AESCrypt
 import kotlinx.android.synthetic.main.activity_change_details.*
 import kotlinx.android.synthetic.main.update_password.*
 import kotlinx.android.synthetic.main.update_password.update
@@ -39,6 +40,9 @@ class UpdatePassword : AppCompatActivity() {
                 update.isEnabled = false
                 val oldPassword = currentPassword.text.toString().trim()
                 val updatedPassword = newPassword.text.toString().trim()
+                val oldEncryptedPasswd = AESCrypt.encrypt(oldPassword,oldPassword)
+                val newEncryptedPasswd = AESCrypt.encrypt(updatedPassword,updatedPassword)
+
 
                 if(updatedPassword.length<6){
                     newPassword.error = "Password must be at least 6 characters"
@@ -49,16 +53,16 @@ class UpdatePassword : AppCompatActivity() {
                 else{
                     val  thisUser = auth.currentUser
                     val credential: AuthCredential = EmailAuthProvider
-                            .getCredential(emailText, oldPassword)
+                            .getCredential(emailText, oldEncryptedPasswd)
 
                     // Prompt the user to re-provide their sign-in credentials
                     thisUser?.reauthenticate(credential)?.addOnCompleteListener {task->
 
                         if (task.isSuccessful) {
-                            thisUser.updatePassword(updatedPassword).addOnCompleteListener {task->
+                            thisUser.updatePassword(newEncryptedPasswd).addOnCompleteListener {task->
                                     if (task.isSuccessful) {
                                         val user = hashMapOf<String, Any>()
-                                        user["password"] = updatedPassword
+                                        user["password"] = newEncryptedPasswd
                                         val documentReference = fstore.collection("users").document(userId)
                                         documentReference.set(user, SetOptions.merge())
 

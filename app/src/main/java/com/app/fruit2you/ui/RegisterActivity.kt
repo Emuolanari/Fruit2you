@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.scottyab.aescrypt.AESCrypt
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -48,6 +49,7 @@ class RegisterActivity : AppCompatActivity() {
         val mail = email.text.toString().trim()
         val phon = phone.text.toString().trim()
         val passwd = password.text.toString().trim()
+        val encryptedPasswd = AESCrypt.encrypt(passwd,passwd)
 
         if(TextUtils.isEmpty(name)||!name.matches(nameRegex)){
             fullName.error = "Enter your full name"
@@ -78,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
 
         else{
             progressBar.visibility = View.VISIBLE
-            auth.createUserWithEmailAndPassword(mail, passwd)
+            auth.createUserWithEmailAndPassword(mail, encryptedPasswd)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -92,7 +94,7 @@ class RegisterActivity : AppCompatActivity() {
                             user["fName"] = name
                             user["email"] = mail
                             user["phone"] = phon
-                            user["password"] = passwd
+                            user["password"] = encryptedPasswd
 
                            // fstore.collection("users").add(user)
                             documentReference.set(user)
