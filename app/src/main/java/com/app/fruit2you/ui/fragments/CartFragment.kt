@@ -172,6 +172,15 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        val orderFragment = OrderFragment()
+        val cartFragment = CartFragment()
+        fun setCurrentFragment(fragment: Fragment){
+            parentFragmentManager.beginTransaction().apply{
+                replace(R.id.flFragment, fragment)
+                addToBackStack(null)
+                commit()
+            }
+        }
         if (requestCode == RaveConstants.RAVE_REQUEST_CODE && intent != null) {
             val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
 
@@ -181,20 +190,16 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 GlobalScope.launch(Dispatchers.IO){
                     viewModel.nukeTable()
                 }
-                val orderFragment = OrderFragment()
-                fun setCurrentFragment(fragment: Fragment){
-                    parentFragmentManager.beginTransaction().apply{
-                        replace(R.id.flFragment, fragment)
-                        addToBackStack(null)
-                        commit()
-                    }
-                }
                 setCurrentFragment(orderFragment)
                 activity?.bottomNavigationView?.selectedItemId =  R.id.miOrder
             } else if (resultCode == RavePayActivity.RESULT_ERROR) {
                 Toast.makeText(activity, "ERROR $message", Toast.LENGTH_SHORT).show()
+                setCurrentFragment(cartFragment)
+                activity?.bottomNavigationView?.selectedItemId =  R.id.miCart
             } else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
                 Toast.makeText(activity, "CANCELLED $message", Toast.LENGTH_SHORT).show()
+                setCurrentFragment(cartFragment)
+                activity?.bottomNavigationView?.selectedItemId =  R.id.miCart
             }
         }
         else {
