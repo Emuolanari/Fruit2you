@@ -179,7 +179,6 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             if (resultCode == RavePayActivity.RESULT_SUCCESS) {
                 Toast.makeText(activity, "payment successful", Toast.LENGTH_SHORT).show()
                 GlobalScope.launch(Dispatchers.IO){
-                    delay(2000L)
                     viewModel.nukeTable()
                 }
                 val orderFragment = OrderFragment()
