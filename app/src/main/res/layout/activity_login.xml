@@ -84,7 +84,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/password"
             android:textColor="#000000"
-            android:labelFor="@+id/password"
+            android:labelFor="@+id/passwordField"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -103,7 +103,7 @@
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/passwordField"
                 android:layout_width="match_parent"
                 android:maxLines="1"
                 android:layout_height="wrap_content"

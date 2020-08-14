@@ -21,7 +21,6 @@ class ChangeDetails : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var fstore: FirebaseFirestore
     private lateinit var emailText: String
-    private lateinit var passWord: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +40,6 @@ class ChangeDetails : AppCompatActivity() {
                 emailField.setText(snapshot?.getString("email"))
                 phoneField.setText(snapshot?.getString("phone"))
                 emailText = snapshot?.getString("email").toString().trim()
-                passWord = snapshot?.getString("password").toString().trim()
-
             }
         }
 
@@ -51,8 +48,10 @@ class ChangeDetails : AppCompatActivity() {
             val newName = nameField.text.toString().trim().toUpperCase(Locale.getDefault())
             val newPhone = phoneField.text.toString().trim()
             val newEmail = emailField.text.toString().trim()
+            val passwd = passwordField.text.toString().trim()
             if (newName.isEmpty()||!newName.matches(nameRegex)){
                 nameField.error = "Enter your full name"
+                update.isEnabled = true
                 return@setOnClickListener
             }
             if (newPhone.isEmpty()||!newPhone.matches(phoneRegex)){
@@ -67,11 +66,17 @@ class ChangeDetails : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if(passwd.isEmpty()){
+                passwordField.error = "You must enter your password to update details"
+                update.isEnabled = true
+                return@setOnClickListener
+            }
+
             else{
                 val  thisUser = auth.currentUser
                 val userId = auth.currentUser!!.uid
                 val credential: AuthCredential = EmailAuthProvider
-                    .getCredential(emailText, passWord)
+                    .getCredential(emailText, passwd)
 
                 thisUser?.reauthenticate(credential)?.addOnCompleteListener {task->
 

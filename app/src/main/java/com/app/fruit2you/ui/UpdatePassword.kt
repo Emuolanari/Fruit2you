@@ -30,7 +30,6 @@ class UpdatePassword : AppCompatActivity() {
             val userId = auth.currentUser!!.uid
             val documentRef = fstore.collection("users").document(userId)
             documentRef.addSnapshotListener {snapshot, e->
-                //val fstorePassword = snapshot?.getString("password").toString().trim()
                 val email = snapshot?.getString("email").toString().trim()
                 emailText = email
             }
@@ -40,8 +39,6 @@ class UpdatePassword : AppCompatActivity() {
                 update.isEnabled = false
                 val oldPassword = currentPassword.text.toString().trim()
                 val updatedPassword = newPassword.text.toString().trim()
-                val oldEncryptedPasswd = AESCrypt.encrypt(oldPassword,oldPassword)
-                val newEncryptedPasswd = AESCrypt.encrypt(updatedPassword,updatedPassword)
 
 
                 if(updatedPassword.length<6){
@@ -53,19 +50,14 @@ class UpdatePassword : AppCompatActivity() {
                 else{
                     val  thisUser = auth.currentUser
                     val credential: AuthCredential = EmailAuthProvider
-                            .getCredential(emailText, oldEncryptedPasswd)
+                            .getCredential(emailText, oldPassword)
 
                     // Prompt the user to re-provide their sign-in credentials
                     thisUser?.reauthenticate(credential)?.addOnCompleteListener {task->
 
                         if (task.isSuccessful) {
-                            thisUser.updatePassword(newEncryptedPasswd).addOnCompleteListener {task->
+                            thisUser.updatePassword(updatedPassword).addOnCompleteListener {task->
                                     if (task.isSuccessful) {
-                                        val user = hashMapOf<String, Any>()
-                                        user["password"] = newEncryptedPasswd
-                                        val documentReference = fstore.collection("users").document(userId)
-                                        documentReference.set(user, SetOptions.merge())
-
                                         Toast.makeText(this,"Password updated successfully",Toast.LENGTH_SHORT)
                                             .show()
                                         update.isEnabled = true

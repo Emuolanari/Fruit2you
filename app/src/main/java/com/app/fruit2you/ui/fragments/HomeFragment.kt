@@ -2,6 +2,7 @@ package com.app.fruit2you.ui.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
@@ -12,6 +13,7 @@ import com.app.fruit2you.R
 import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.Fruit2YouViewModel
 import com.app.fruit2you.ui.Fruit2YouViewModelFactory
+import com.app.fruit2you.ui.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.kodein.di.KodeinAware
@@ -25,7 +27,12 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val auth = FirebaseAuth.getInstance()
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if(currentUser==null){
+            val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
+        }
         val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
 
         buyM.setOnClickListener {
@@ -112,4 +119,5 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
         }
 
     }
+
 }

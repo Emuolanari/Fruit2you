@@ -68,4 +68,6 @@
     <string name="current_password">Enter Current Password</string>
     <string name="current_password_title">Current Password</string>
     <string name="new_password">New Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_password_to_confirm_update">Enter Password To Confirm Update</string>
 </resources>

@@ -18,6 +18,7 @@ import com.app.fruit2you.R
 import com.app.fruit2you.data.database.entities.FruitItem
 import com.app.fruit2you.ui.Fruit2YouViewModel
 import com.app.fruit2you.ui.Fruit2YouViewModelFactory
+import com.app.fruit2you.ui.LoginActivity
 import com.app.fruit2you.utilities.FruitsAdapter
 import com.flutterwave.raveandroid.RavePayActivity
 import com.flutterwave.raveandroid.RaveUiManager
@@ -50,7 +51,12 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth = FirebaseAuth.getInstance()
+        val auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        if(currentUser==null){
+            val intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
+        }
         fstore = FirebaseFirestore.getInstance()
         val userID = auth.currentUser?.uid
 
@@ -215,4 +221,6 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         super.onResume()
         checkout.isEnabled = true
     }
+
+
 }

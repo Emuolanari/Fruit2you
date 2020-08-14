@@ -48,8 +48,7 @@ class RegisterActivity : AppCompatActivity() {
         val name=fullName.text.toString().trim().toUpperCase(Locale.getDefault())
         val mail = email.text.toString().trim()
         val phon = phone.text.toString().trim()
-        val passwd = password.text.toString().trim()
-        val encryptedPasswd = AESCrypt.encrypt(passwd,passwd)
+        val passwd = passwordField.text.toString().trim()
 
         if(TextUtils.isEmpty(name)||!name.matches(nameRegex)){
             fullName.error = "Enter your full name"
@@ -68,19 +67,19 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if(TextUtils.isEmpty(passwd)){
-            password.error= "Please choose a password"
+            passwordField.error= "Please choose a password"
             return
         }
 
         if(passwd.length<6){
-            password.error= "Please enter a password up to 6 characters"
+            passwordField.error= "Please enter a password up to 6 characters"
             return
         }
 
 
         else{
             progressBar.visibility = View.VISIBLE
-            auth.createUserWithEmailAndPassword(mail, encryptedPasswd)
+            auth.createUserWithEmailAndPassword(mail, passwd)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
@@ -94,7 +93,6 @@ class RegisterActivity : AppCompatActivity() {
                             user["fName"] = name
                             user["email"] = mail
                             user["phone"] = phon
-                            user["password"] = encryptedPasswd
 
                            // fstore.collection("users").add(user)
                             documentReference.set(user)

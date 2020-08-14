@@ -1,6 +1,5 @@
 package com.app.fruit2you.ui
 
-import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +13,6 @@ import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
 import com.scottyab.aescrypt.AESCrypt
 import kotlinx.android.synthetic.main.activity_login.*
-import java.security.AccessController.getContext
 
 @Suppress("NAME_SHADOWING")
 class LoginActivity : AppCompatActivity() {
@@ -69,11 +67,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun formValidation(){
         val mail = email.text.toString().trim()
-        val passwd = password.text.toString().trim()
+        val passwd = passwordField.text.toString().trim()
         val encryptedPasswd = AESCrypt.encrypt(passwd,passwd)
 
         if(TextUtils.isEmpty(passwd))
-            password.error= "Please enter your password"
+            passwordField.error= "Please enter your password"
 
         if(TextUtils.isEmpty(mail))
         email.error = "Please enter your email address"
