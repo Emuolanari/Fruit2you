@@ -100,5 +100,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     //Encryption
-    implementation 'com.scottyab:aescrypt:0.0.1'
+    //implementation 'com.scottyab:aescrypt:0.0.1'
 }
