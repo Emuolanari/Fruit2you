@@ -82,7 +82,6 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d("TAG", "createUserWithEmail:success")
                         Toast.makeText(this,"Sign up successful",Toast.LENGTH_LONG).show()
 
                         GlobalScope.launch {

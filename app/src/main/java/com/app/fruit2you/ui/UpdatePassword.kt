@@ -1,9 +1,7 @@
 package com.app.fruit2you.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.app.fruit2you.R
 import com.google.firebase.auth.AuthCredential
