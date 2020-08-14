@@ -10,9 +10,6 @@ import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
-import com.scottyab.aescrypt.AESCrypt
-import kotlinx.android.synthetic.main.activity_change_details.*
 import kotlinx.android.synthetic.main.update_password.*
 import kotlinx.android.synthetic.main.update_password.update
 

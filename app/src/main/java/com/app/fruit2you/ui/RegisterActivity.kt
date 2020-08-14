@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.app.fruit2you.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.scottyab.aescrypt.AESCrypt
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
