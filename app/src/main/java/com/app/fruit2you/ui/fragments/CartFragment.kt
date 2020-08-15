@@ -1,15 +1,11 @@
 package com.app.fruit2you.ui.fragments
 
-import android.content.Context
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -31,12 +27,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.cart_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 import java.lang.System.currentTimeMillis
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
@@ -48,10 +45,14 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     private var email: String = ""
     private var fName=""
     private var lName=""
+    private lateinit var itemsString: String
+    private lateinit var txRef: String
+    private val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.UK)
+    private val currentDate = sdf.format(Date())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         if(currentUser==null){
             val intent = Intent(activity, LoginActivity::class.java)
@@ -80,7 +81,6 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         val publicKey = "FLWPUBK_TEST-54e64b93d20fc322f03ea1e51303634d-X"
         val encryptionKey = "FLWSECK_TESTd17a7a57aacf"
         val narration = "payment for fruit"
-        var txRef: String
         //val country = "NG" deprecated
         val currency = "NGN"
 
@@ -99,7 +99,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 RaveUiManager(this).setAmount(totalAmount.toDouble())
                     .setCurrency(currency)
                     .setPhoneNumber(phone, true)
-                     .setEmail(email)
+                    .setEmail(email)
                     .setfName(fName)
                     .setlName(lName)
                     .acceptUssdPayments(true)
@@ -141,6 +141,11 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             }
         })
 
+        viewModel.getAllShoppingItems().observe(viewLifecycleOwner, Observer <List<FruitItem>> {
+            val items = it
+            val separator = ","
+            itemsString = items.joinToString(separator)
+        })
 
         address.setOnTouchListener { v, event ->
             v.parent.requestDisallowInterceptTouchEvent(true)
@@ -182,6 +187,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         val orderFragment = OrderFragment()
         val cartFragment = CartFragment()
+        auth = FirebaseAuth.getInstance()
+        val uid = auth.currentUser?.uid
         fun setCurrentFragment(fragment: Fragment){
             parentFragmentManager.beginTransaction().apply{
                 replace(R.id.flFragment, fragment)
@@ -195,11 +202,22 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             val message = intent.getStringExtra("response")
             if (resultCode == RavePayActivity.RESULT_SUCCESS) {
                 Toast.makeText(activity, "payment successful", Toast.LENGTH_SHORT).show()
-                GlobalScope.launch(Dispatchers.IO){
-                    viewModel.nukeTable()
+                if (uid!=null){
+                    GlobalScope.launch(Dispatchers.IO){
+                        val collectionRef =
+                            fstore.collection("users").document(uid).collection("orders")
+                        val order = hashMapOf<String, Any>()
+                        order["ref"] = txRef
+                        order["items"] = itemsString
+                        order["date"] = currentDate
+
+                        collectionRef.add(order)
+                        viewModel.nukeTable()
+                    }
+                    setCurrentFragment(orderFragment)
+                    activity?.bottomNavigationView?.selectedItemId =  R.id.miOrder
                 }
-                setCurrentFragment(orderFragment)
-                activity?.bottomNavigationView?.selectedItemId =  R.id.miOrder
+
             } else if (resultCode == RavePayActivity.RESULT_ERROR) {
                 Toast.makeText(activity, "ERROR $message", Toast.LENGTH_SHORT).show()
                 setCurrentFragment(cartFragment)
