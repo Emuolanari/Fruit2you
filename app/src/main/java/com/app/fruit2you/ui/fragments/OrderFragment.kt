@@ -73,7 +73,7 @@ class OrderFragment: Fragment(R.layout.order_fragment), OrdersAdapter.OrdersList
         val orderRef: CollectionReference =
             fstore.collection("users").document(userId).collection("orders")
         val query =
-            orderRef.orderBy("items", Query.Direction.DESCENDING)
+            orderRef.orderBy("date", Query.Direction.DESCENDING)
         val options: FirestoreRecyclerOptions<Order> = FirestoreRecyclerOptions.Builder<Order>()
             .setQuery(query, Order::class.java)
             .build()

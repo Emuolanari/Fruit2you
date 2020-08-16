@@ -205,12 +205,14 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 Toast.makeText(activity, "payment successful", Toast.LENGTH_SHORT).show()
                 if (uid!=null){
                     GlobalScope.launch(Dispatchers.IO){
+                        val deliveryAddress = address.text.toString().trim()
                         val collectionRef =
                             fstore.collection("users").document(uid).collection("orders")
                         val order = hashMapOf<String, Any>()
                         order["ref"] = txRef
                         order["items"] = itemsString
                         order["date"] = currentDate
+                        order["address"] = deliveryAddress
 
                         collectionRef.add(order)
                         viewModel.nukeTable()
