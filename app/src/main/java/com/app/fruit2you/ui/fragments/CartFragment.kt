@@ -93,7 +93,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         fun makePayment(a:Meta){
             viewModel.priceOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
                 val totalAmount = it
-                txRef = currentTimeMillis().toString()+"_"+auth.currentUser?.uid.toString()
+                txRef = currentTimeMillis().toString()
+                //+ "_" +auth.currentUser?.uid.toString()
 
 
                 RaveUiManager(this).setAmount(totalAmount.toDouble())

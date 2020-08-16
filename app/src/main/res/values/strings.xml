@@ -73,6 +73,7 @@
     <string name="order_new_item">Place New Order</string>
     <string name="order_history">Order History</string>
     <string name="date">Date</string>
-    <string name="items">Items</string>
     <string name="payment_reference">Payment Reference</string>
+    <string name="items">Items</string>
+    <string name="orderref">orderRef</string>
 </resources>
