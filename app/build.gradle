@@ -101,4 +101,7 @@ dependencies {
 
     //Encryption
     //implementation 'com.scottyab:aescrypt:0.0.1'
+    //RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:6.2.0'
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import com.app.fruit2you.data.database.Fruit2YouDatabase
 import com.app.fruit2you.data.repositories.Fruit2YouRepository
 import com.app.fruit2you.ui.Fruit2YouViewModelFactory
+import com.google.firebase.firestore.DocumentSnapshot
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -20,4 +21,5 @@ class FruitsApplication: Application(), KodeinAware{
         bind() from singleton { Fruit2YouRepository(instance()) }
         bind() from provider {Fruit2YouViewModelFactory(instance())}
     }
+
 }

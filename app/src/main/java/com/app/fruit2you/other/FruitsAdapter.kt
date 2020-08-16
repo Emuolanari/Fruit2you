@@ -1,4 +1,4 @@
-package com.app.fruit2you.utilities
+package com.app.fruit2you.other
 
 import android.view.LayoutInflater
 import android.view.View

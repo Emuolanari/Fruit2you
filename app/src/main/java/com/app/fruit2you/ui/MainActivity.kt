@@ -18,7 +18,7 @@ import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 
 
-class MainActivity : AppCompatActivity(), KodeinAware {
+class MainActivity : AppCompatActivity() , KodeinAware {
     override val kodein by kodein()
     private val factory: Fruit2YouViewModelFactory by instance()
 
