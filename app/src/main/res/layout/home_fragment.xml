@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="42dp"
             android:fontFamily="@font/poppins"
             android:text="@string/_500_00"
@@ -84,10 +84,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/itembg2"
             app:layout_constraintEnd_toStartOf="@+id/buyO"
-            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toEndOf="@+id/orangeImage"
             app:layout_constraintTop_toBottomOf="@+id/pcsO"
-            app:layout_constraintVertical_bias="0.461" />
+            app:layout_constraintVertical_bias="0.076" />
 
         <ImageView
             android:id="@+id/orangeImage"
@@ -142,7 +142,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/itembg3"
             app:layout_constraintEnd_toStartOf="@+id/buyC"
-            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintHorizontal_bias="0.148"
             app:layout_constraintStart_toEndOf="@+id/coconutImage"
             app:layout_constraintTop_toBottomOf="@+id/pcsC"
             app:layout_constraintVertical_bias="0.0" />
@@ -194,22 +194,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="72dp"
             android:fontFamily="@font/poppins"
             android:text="@string/pcs"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@+id/coconut"
-            tools:layout_editor_absoluteX="127dp" />
+            app:layout_constraintEnd_toStartOf="@+id/buyC"
+            app:layout_constraintTop_toBottomOf="@+id/coconut" />
 
         <TextView
             android:id="@+id/packS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginEnd="72dp"
             android:fontFamily="@font/poppins"
             android:text="@string/_1_pack_1_5kg"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@+id/strawberry"
-            tools:layout_editor_absoluteX="127dp" />
+            app:layout_constraintEnd_toStartOf="@+id/buyS"
+            app:layout_constraintTop_toBottomOf="@+id/strawberry" />
 
         <Button
             android:id="@+id/buyC"
@@ -222,8 +224,8 @@
             app:backgroundTint="#44AD65"
             app:layout_constraintBottom_toBottomOf="@+id/itembg3"
             app:layout_constraintEnd_toEndOf="@+id/itembg3"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toEndOf="@+id/pcsC"
+            app:layout_constraintHorizontal_bias="0.938"
+            app:layout_constraintStart_toStartOf="@+id/itembg3"
             app:layout_constraintTop_toTopOf="@+id/itembg3"
             app:layout_constraintVertical_bias="0.235" />
 
@@ -238,10 +240,10 @@
             app:backgroundTint="#44AD65"
             app:layout_constraintBottom_toBottomOf="@+id/itembg4"
             app:layout_constraintEnd_toEndOf="@+id/itembg4"
-            app:layout_constraintHorizontal_bias="0.871"
-            app:layout_constraintStart_toEndOf="@+id/strawberry"
+            app:layout_constraintHorizontal_bias="0.938"
+            app:layout_constraintStart_toStartOf="@+id/itembg4"
             app:layout_constraintTop_toTopOf="@+id/itembg4"
-            app:layout_constraintVertical_bias="0.134" />
+            app:layout_constraintVertical_bias="0.213" />
 
         <TextView
             android:id="@+id/orange"
@@ -262,11 +264,13 @@
             android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins"
             android:text="@string/coconut"
             android:textColor="#000000"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/buyC"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/coconutImage"
             app:layout_constraintTop_toTopOf="@+id/itembg3" />
 
@@ -275,11 +279,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins"
             android:text="@string/strawberry"
             android:textColor="#000000"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/buyS"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/strawberryImage"
             app:layout_constraintTop_toTopOf="@+id/itembg4" />
 
@@ -322,6 +328,7 @@
             app:layout_constraintEnd_toStartOf="@+id/mango"
             app:layout_constraintStart_toStartOf="@+id/itembg1"
             app:layout_constraintTop_toTopOf="@+id/itembg1"
+            app:layout_constraintVertical_bias="0.48000002"
             app:srcCompat="@drawable/mangoes" />
 
         <TextView
@@ -333,6 +340,8 @@
             android:fontFamily="@font/poppins"
             android:text="@string/pcs"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/buyM"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/mangoImage"
             app:layout_constraintTop_toBottomOf="@+id/mango" />
 
@@ -348,22 +357,23 @@
             app:backgroundTint="#44AD65"
             app:layout_constraintBottom_toBottomOf="@+id/itembg1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.788"
-            app:layout_constraintStart_toEndOf="@+id/pcsM"
+            app:layout_constraintHorizontal_bias="0.936"
+            app:layout_constraintStart_toStartOf="@+id/itembg1"
             app:layout_constraintTop_toTopOf="@+id/itembg1"
-            app:layout_constraintVertical_bias="0.014" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/mango"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="104dp"
             android:fontFamily="@font/poppins"
             android:text="@string/mango"
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/itembg1"
-            tools:layout_editor_absoluteX="121dp" />
+            app:layout_constraintEnd_toStartOf="@+id/buyM"
+            app:layout_constraintTop_toTopOf="@+id/itembg1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
