@@ -12,6 +12,276 @@
         android:layout_height="wrap_content"
         tools:context=".ui.MainActivity">
 
+        <ImageView
+            android:id="@+id/itembg1"
+            android:layout_width="396dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/orderview"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/itembg2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/available" />
+
+        <ImageView
+            android:id="@+id/itembg2"
+            android:layout_width="396dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/orderview"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/itembg3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itembg1" />
+
+        <ImageView
+            android:id="@+id/itembg3"
+            android:layout_width="396dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/orderview"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/itembg4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itembg2" />
+
+        <ImageView
+            android:id="@+id/itembg4"
+            android:layout_width="396dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/orderview"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itembg3" />
+
+        <TextView
+            android:id="@+id/priceO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="42dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/_500_00"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg2"
+            app:layout_constraintEnd_toStartOf="@+id/buyO"
+            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintStart_toEndOf="@+id/orangeImage"
+            app:layout_constraintTop_toBottomOf="@+id/pcsO"
+            app:layout_constraintVertical_bias="0.461" />
+
+        <ImageView
+            android:id="@+id/orangeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/orange_image"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg2"
+            app:layout_constraintEnd_toStartOf="@+id/pcsO"
+            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintStart_toStartOf="@+id/itembg2"
+            app:layout_constraintTop_toTopOf="@+id/itembg2"
+            app:layout_constraintVertical_bias="0.487"
+            app:srcCompat="@drawable/oranges" />
+
+        <Button
+            android:id="@+id/buyO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buy"
+            android:minHeight="0dp"
+            android:text="@string/buy_now"
+            android:textAllCaps="false"
+            app:backgroundTint="#44AD65"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg2"
+            app:layout_constraintEnd_toEndOf="@+id/itembg2"
+            app:layout_constraintHorizontal_bias="0.967"
+            app:layout_constraintStart_toStartOf="@+id/itembg2"
+            app:layout_constraintTop_toTopOf="@+id/itembg2"
+            app:layout_constraintVertical_bias="0.213" />
+
+        <TextView
+            android:id="@+id/pcsO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="84dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/pcs"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/buyO"
+            app:layout_constraintTop_toBottomOf="@+id/orange" />
+
+        <TextView
+            android:id="@+id/priceC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/_500_00"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg3"
+            app:layout_constraintEnd_toStartOf="@+id/buyC"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toEndOf="@+id/coconutImage"
+            app:layout_constraintTop_toBottomOf="@+id/pcsC"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/priceS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/_500_00"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg4"
+            app:layout_constraintEnd_toStartOf="@+id/buyS"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/strawberryImage"
+            app:layout_constraintTop_toBottomOf="@+id/packS"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/coconutImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/coconut_image"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg3"
+            app:layout_constraintEnd_toStartOf="@+id/pcsC"
+            app:layout_constraintStart_toStartOf="@+id/itembg3"
+            app:layout_constraintTop_toTopOf="@+id/itembg3"
+            app:srcCompat="@drawable/coconut" />
+
+        <ImageView
+            android:id="@+id/strawberryImage"
+            android:layout_width="wrap_content"
+            android:layout_height="89dp"
+            android:contentDescription="@string/strawberry_image"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg4"
+            app:layout_constraintEnd_toStartOf="@+id/packS"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="@+id/itembg4"
+            app:layout_constraintTop_toTopOf="@+id/itembg4"
+            app:layout_constraintVertical_bias="0.487"
+            app:srcCompat="@drawable/strawberry" />
+
+        <TextView
+            android:id="@+id/pcsC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/pcs"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@+id/coconut"
+            tools:layout_editor_absoluteX="127dp" />
+
+        <TextView
+            android:id="@+id/packS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/_1_pack_1_5kg"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@+id/strawberry"
+            tools:layout_editor_absoluteX="127dp" />
+
+        <Button
+            android:id="@+id/buyC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buy"
+            android:minHeight="0dp"
+            android:text="@string/buy_now"
+            android:textAllCaps="false"
+            app:backgroundTint="#44AD65"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg3"
+            app:layout_constraintEnd_toEndOf="@+id/itembg3"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toEndOf="@+id/pcsC"
+            app:layout_constraintTop_toTopOf="@+id/itembg3"
+            app:layout_constraintVertical_bias="0.235" />
+
+        <Button
+            android:id="@+id/buyS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buy"
+            android:minHeight="0dp"
+            android:text="@string/buy_now"
+            android:textAllCaps="false"
+            app:backgroundTint="#44AD65"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg4"
+            app:layout_constraintEnd_toEndOf="@+id/itembg4"
+            app:layout_constraintHorizontal_bias="0.871"
+            app:layout_constraintStart_toEndOf="@+id/strawberry"
+            app:layout_constraintTop_toTopOf="@+id/itembg4"
+            app:layout_constraintVertical_bias="0.134" />
+
+        <TextView
+            android:id="@+id/orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/orange"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/buyO"
+            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintStart_toEndOf="@+id/orangeImage"
+            app:layout_constraintTop_toTopOf="@+id/itembg2" />
+
+        <TextView
+            android:id="@+id/coconut"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/coconut"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/coconutImage"
+            app:layout_constraintTop_toTopOf="@+id/itembg3" />
+
+        <TextView
+            android:id="@+id/strawberry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/strawberry"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/strawberryImage"
+            app:layout_constraintTop_toTopOf="@+id/itembg4" />
 
         <TextView
             android:id="@+id/available"
@@ -30,266 +300,70 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/priceO"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/_500_00"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/priceM"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/available" />
-
-        <TextView
             android:id="@+id/priceM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
             android:text="@string/_500_00"
             android:textColor="#000000"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/priceO"
-            app:layout_constraintTop_toBottomOf="@+id/available" />
-
-        <ImageView
-            android:id="@+id/orangeImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/orange_image"
-            app:layout_constraintEnd_toStartOf="@+id/mangoImage"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceO"
-            app:srcCompat="@drawable/oranges" />
+            app:layout_constraintStart_toEndOf="@+id/mangoImage"
+            app:layout_constraintTop_toBottomOf="@+id/pcsM" />
 
         <ImageView
             android:id="@+id/mangoImage"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="89dp"
             android:contentDescription="@string/mango_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/orangeImage"
-            app:layout_constraintTop_toBottomOf="@+id/priceM"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg1"
+            app:layout_constraintEnd_toStartOf="@+id/mango"
+            app:layout_constraintStart_toStartOf="@+id/itembg1"
+            app:layout_constraintTop_toTopOf="@+id/itembg1"
             app:srcCompat="@drawable/mangoes" />
-
-        <Button
-            android:id="@+id/buyO"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@drawable/buy"
-            android:minHeight="0dp"
-            android:text="@string/buy_now"
-            android:textAllCaps="false"
-            app:backgroundTint="#44AD65"
-            app:layout_constraintEnd_toStartOf="@+id/buyM"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pcsO" />
-
-        <TextView
-            android:id="@+id/pcsO"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/pcs"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/pcsM"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/orange" />
 
         <TextView
             android:id="@+id/pcsM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins"
             android:text="@string/pcs"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/pcsO"
+            app:layout_constraintStart_toEndOf="@+id/mangoImage"
             app:layout_constraintTop_toBottomOf="@+id/mango" />
 
         <Button
             android:id="@+id/buyM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/buy"
             android:minHeight="0dp"
             android:text="@string/buy_now"
             android:textAllCaps="false"
             app:backgroundTint="#44AD65"
+            app:layout_constraintBottom_toBottomOf="@+id/itembg1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buyO"
-            app:layout_constraintTop_toBottomOf="@+id/pcsM" />
-
-        <TextView
-            android:id="@+id/priceC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/_500_00"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/priceS"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buyO" />
-
-        <TextView
-            android:id="@+id/priceS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/_500_00"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/priceC"
-            app:layout_constraintTop_toBottomOf="@+id/buyM" />
-
-        <ImageView
-            android:id="@+id/coconutImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/coconut_image"
-            app:layout_constraintEnd_toStartOf="@+id/strawberryImage"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/priceC"
-            app:srcCompat="@drawable/coconut" />
-
-        <ImageView
-            android:id="@+id/strawberryImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/strawberry_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/coconutImage"
-            app:layout_constraintTop_toBottomOf="@+id/priceS"
-            app:srcCompat="@drawable/strawberry" />
-
-        <TextView
-            android:id="@+id/pcsC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/pcs"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/packS"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coconut" />
-
-        <TextView
-            android:id="@+id/packS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/_1_pack_1_5kg"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/pcsC"
-            app:layout_constraintTop_toBottomOf="@+id/strawberry" />
-
-        <Button
-            android:id="@+id/buyC"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/buy"
-            android:minHeight="0dp"
-            android:text="@string/buy_now"
-            android:textAllCaps="false"
-            app:backgroundTint="#44AD65"
-            app:layout_constraintEnd_toStartOf="@+id/buyS"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pcsC" />
-
-        <Button
-            android:id="@+id/buyS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/buy"
-            android:minHeight="0dp"
-            android:text="@string/buy_now"
-            android:textAllCaps="false"
-            app:backgroundTint="#44AD65"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buyC"
-            app:layout_constraintTop_toBottomOf="@+id/packS" />
-
-        <TextView
-            android:id="@+id/orange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/orange"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/mango"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/orangeImage" />
+            app:layout_constraintHorizontal_bias="0.788"
+            app:layout_constraintStart_toEndOf="@+id/pcsM"
+            app:layout_constraintTop_toTopOf="@+id/itembg1"
+            app:layout_constraintVertical_bias="0.014" />
 
         <TextView
             android:id="@+id/mango"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins"
             android:text="@string/mango"
             android:textColor="#000000"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/orange"
-            app:layout_constraintTop_toBottomOf="@+id/mangoImage" />
-
-        <TextView
-            android:id="@+id/coconut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/coconut"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/strawberry"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coconutImage" />
-
-        <TextView
-            android:id="@+id/strawberry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="@string/strawberry"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/coconut"
-            app:layout_constraintTop_toBottomOf="@+id/strawberryImage" />
+            app:layout_constraintTop_toTopOf="@+id/itembg1"
+            tools:layout_editor_absoluteX="121dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
