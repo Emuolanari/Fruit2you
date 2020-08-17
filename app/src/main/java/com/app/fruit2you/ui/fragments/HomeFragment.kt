@@ -27,12 +27,12 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        if(currentUser==null){
+        //val auth = FirebaseAuth.getInstance()
+        //val currentUser = auth.currentUser
+        /*if(currentUser==null){
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
-        }
+        }*/
         val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)
 
         buyM.setOnClickListener {

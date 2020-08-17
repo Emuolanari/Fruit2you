@@ -53,11 +53,12 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        if(currentUser==null){
+        //val source = UUID.randomUUID().toString()
+        //val currentUser = auth.currentUser
+        /*if(currentUser==null){
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
-        }
+        }*/
         fstore = FirebaseFirestore.getInstance()
         val userID = auth.currentUser?.uid
 
@@ -90,13 +91,14 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         cartRecyclerView.layoutManager = LinearLayoutManager(activity)
         cartRecyclerView.adapter = adapter
 
-        fun makePayment(a:Meta){
+        fun makePayment(a:Meta,b:Meta){
             viewModel.priceOfCartItems().observe(viewLifecycleOwner, Observer <Int> {
                 val totalAmount = it
-                txRef = currentTimeMillis().toString()
-                //+ "_" +auth.currentUser?.uid.toString()
+                //txRef = currentTimeMillis().toString()+ "_" +auth.currentUser?.uid.toString()
+                val prepareTxRef = UUID.randomUUID().toString()
+                txRef = prepareTxRef.take(20)
 
-
+                
                 RaveUiManager(this).setAmount(totalAmount.toDouble())
                     .setCurrency(currency)
                     .setPhoneNumber(phone, true)
@@ -113,7 +115,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     .acceptMpesaPayments(false)
                     .acceptGHMobileMoneyPayments(false)
                     .onStagingEnv(false)
-                    .setMeta(mutableListOf(a))
+                    .setMeta(mutableListOf(a,b))
                     .allowSaveCardFeature(true)
                     .withTheme(R.style.DefaultTheme)
                     .initialize()
@@ -175,7 +177,8 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             checkout.isEnabled = false
             if(deliveryAddress.isNotEmpty()){
                 val a = Meta("address",deliveryAddress)
-                makePayment(a)
+                val b = Meta("items",itemsString)
+                makePayment(a,b)
             }
             else{
                 Toast.makeText(activity,"Please enter your delivery address",Toast.LENGTH_SHORT).show()

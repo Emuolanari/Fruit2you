@@ -78,7 +78,6 @@ class OrderFragment: Fragment(R.layout.order_fragment), OrdersAdapter.OrdersList
             .setQuery(query, Order::class.java)
             .build()
         adapter = OrdersAdapter(options, this)
-        //orderRecyclerView.setHasFixedSize(true)
         orderRecyclerView.layoutManager = LinearLayoutManager(activity)
         orderRecyclerView.adapter = adapter
     }
