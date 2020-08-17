@@ -47,7 +47,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     private var lName=""
     private lateinit var itemsString: String
     private lateinit var txRef: String
-    private val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.UK)
+    private val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss a", Locale.UK)
     private val currentDate = sdf.format(Date())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
