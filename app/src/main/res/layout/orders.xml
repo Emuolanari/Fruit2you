@@ -16,7 +16,8 @@
         android:textColor="#FCB51D"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/items" />
 
     <TextView
         android:id="@+id/items"
@@ -26,6 +27,7 @@
         android:fontFamily="@font/poppins"
         android:text="@string/items"
         android:textColor="@color/raveBlack"
+        app:layout_constraintBottom_toTopOf="@id/referenceText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
@@ -33,12 +35,11 @@
         android:id="@+id/reference"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/poppins"
         android:text="@string/payment_reference"
-        android:textColor="@color/raveBlack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/items" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/referenceText" />
 
     <ImageView
         android:id="@+id/delete"
@@ -51,5 +52,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_delete2"
         android:contentDescription="@string/delete_icon" />
+
+    <TextView
+        android:id="@+id/referenceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/orderref"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

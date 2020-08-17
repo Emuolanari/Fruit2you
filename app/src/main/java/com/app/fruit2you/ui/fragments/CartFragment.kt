@@ -96,7 +96,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                 val totalAmount = it
                 //txRef = currentTimeMillis().toString()+ "_" +auth.currentUser?.uid.toString()
                 val prepareTxRef = UUID.randomUUID().toString()
-                txRef = prepareTxRef.take(20)
+                txRef = prepareTxRef.take(11)
 
                 
                 RaveUiManager(this).setAmount(totalAmount.toDouble())
