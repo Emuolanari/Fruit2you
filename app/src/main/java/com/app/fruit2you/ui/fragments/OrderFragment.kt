@@ -103,6 +103,6 @@ class OrderFragment: Fragment(R.layout.order_fragment), OrdersAdapter.OrdersList
                 if (order != null) {
                     documentReference?.set(order)
                 }
-            }
+            }.show()
     }
 }
