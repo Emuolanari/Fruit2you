@@ -81,7 +81,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
         val publicKey = "FLWPUBK_TEST-54e64b93d20fc322f03ea1e51303634d-X"
         val encryptionKey = "FLWSECK_TESTd17a7a57aacf"
-        val narration = "payment for fruit"
+        val narration = "payment for fruits"
         //val country = "NG" deprecated
         val currency = "NGN"
 

@@ -17,6 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 open class OrdersAdapter(options: FirestoreRecyclerOptions<Order>, var olistener: OrdersListener) :
     FirestoreRecyclerAdapter<Order, OrdersAdapter.OrderHolder>(options) {
 
+
     @Override
     override fun onBindViewHolder(holder: OrderHolder, position: Int, model: Order) {
         holder.date.text = model.getDate()
@@ -24,7 +25,9 @@ open class OrdersAdapter(options: FirestoreRecyclerOptions<Order>, var olistener
         holder.items.text = model.getItems()
         holder.reference.text = model.getRef()
         holder.delete.setOnClickListener {
-            holder.deleteItem()
+            if (position!=RecyclerView.NO_POSITION){
+                holder.deleteItem()
+            }
         }
     }
 
