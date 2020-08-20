@@ -37,7 +37,6 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/itembg3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/itembg1" />
 
@@ -52,7 +51,6 @@
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@+id/itembg4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/itembg2" />
 
@@ -66,7 +64,6 @@
             android:background="@drawable/orderview"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/itembg3" />
 
@@ -74,7 +71,7 @@
             android:id="@+id/priceO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="42dp"
             android:fontFamily="@font/poppins"
@@ -83,11 +80,9 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/itembg2"
-            app:layout_constraintEnd_toStartOf="@+id/buyO"
-            app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toEndOf="@+id/orangeImage"
             app:layout_constraintTop_toBottomOf="@+id/pcsO"
-            app:layout_constraintVertical_bias="0.076" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/orangeImage"
@@ -113,7 +108,7 @@
             app:backgroundTint="#44AD65"
             app:layout_constraintBottom_toBottomOf="@+id/itembg2"
             app:layout_constraintEnd_toEndOf="@+id/itembg2"
-            app:layout_constraintHorizontal_bias="0.967"
+            app:layout_constraintHorizontal_bias="0.93"
             app:layout_constraintStart_toStartOf="@+id/itembg2"
             app:layout_constraintTop_toTopOf="@+id/itembg2"
             app:layout_constraintVertical_bias="0.213" />
@@ -123,11 +118,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="84dp"
             android:fontFamily="@font/poppins"
             android:text="@string/pcs"
             android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/buyO"
+            app:layout_constraintStart_toStartOf="@+id/orange"
             app:layout_constraintTop_toBottomOf="@+id/orange" />
 
         <TextView
@@ -249,13 +243,13 @@
             android:id="@+id/orange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins"
             android:text="@string/orange"
             android:textColor="#000000"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/buyO"
-            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintHorizontal_bias="0.131"
             app:layout_constraintStart_toEndOf="@+id/orangeImage"
             app:layout_constraintTop_toTopOf="@+id/itembg2" />
 
@@ -323,12 +317,12 @@
             android:id="@+id/mangoImage"
             android:layout_width="wrap_content"
             android:layout_height="89dp"
+            android:layout_marginStart="12dp"
             android:contentDescription="@string/mango_image"
             app:layout_constraintBottom_toBottomOf="@+id/itembg1"
-            app:layout_constraintEnd_toStartOf="@+id/mango"
             app:layout_constraintStart_toStartOf="@+id/itembg1"
             app:layout_constraintTop_toTopOf="@+id/itembg1"
-            app:layout_constraintVertical_bias="0.48000002"
+            app:layout_constraintVertical_bias="0.384"
             app:srcCompat="@drawable/mangoes" />
 
         <TextView
@@ -357,23 +351,33 @@
             app:backgroundTint="#44AD65"
             app:layout_constraintBottom_toBottomOf="@+id/itembg1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.936"
+            app:layout_constraintHorizontal_bias="0.584"
             app:layout_constraintStart_toStartOf="@+id/itembg1"
             app:layout_constraintTop_toTopOf="@+id/itembg1"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.13" />
 
         <TextView
             android:id="@+id/mango"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="104dp"
             android:fontFamily="@font/poppins"
             android:text="@string/mango"
             android:textColor="#000000"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/buyM"
+            app:layout_constraintHorizontal_bias="0.074"
+            app:layout_constraintStart_toEndOf="@+id/mangoImage"
             app:layout_constraintTop_toTopOf="@+id/itembg1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
