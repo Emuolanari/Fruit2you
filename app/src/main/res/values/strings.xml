@@ -76,4 +76,6 @@
     <string name="payment_reference">Payment Reference</string>
     <string name="items">Items</string>
     <string name="orderref">OrderRef:</string>
+    <string name="delivery_icon">delivery icon</string>
+    <string name="yellow_circle">yellow circle</string>
 </resources>
