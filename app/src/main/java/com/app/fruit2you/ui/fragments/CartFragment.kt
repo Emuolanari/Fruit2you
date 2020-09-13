@@ -70,8 +70,14 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                     phone= documentSnapshot.getString("phone").toString()
                     val fullName = documentSnapshot.getString("fName").toString()
                     val nameArray = fullName.split(" ")
-                    fName = nameArray[0]
-                    lName = nameArray[1]
+                    if (nameArray.size>1){
+                        fName = nameArray[0]
+                        lName = nameArray[1]
+                    }
+                    else{
+                        fName = nameArray[0]
+                    }
+
                     email = documentSnapshot.getString("email").toString()
                     phone = documentSnapshot.getString("phone").toString()
                 }
