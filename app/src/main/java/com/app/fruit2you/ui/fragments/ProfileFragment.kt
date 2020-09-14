@@ -39,7 +39,7 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
                 .into(profilePic)
         }
         profilePic.setOnClickListener {
-            profilePic.setImageBitmap(null)
+            //profilePic.setImageBitmap(null)
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
@@ -101,7 +101,7 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
 
     private fun getDownloadUrl(reference: StorageReference) {
         reference.downloadUrl.addOnSuccessListener { uri ->
-            Log.d("TAG", "onSuccess: $uri")
+            //Log.d("TAG", "onSuccess: $uri")
             setUserProfileUrl(uri)
         }
     }
