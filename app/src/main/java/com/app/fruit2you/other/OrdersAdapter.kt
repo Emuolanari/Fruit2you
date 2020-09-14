@@ -46,7 +46,9 @@ open class OrdersAdapter(options: FirestoreRecyclerOptions<Order>, var olistener
         var delete: ImageView = itemView.findViewById(R.id.delete)
 
         fun deleteItem() {
-            olistener.handleDeleteItem(snapshots.getSnapshot(adapterPosition))
+            if (adapterPosition >= 0){
+                olistener.handleDeleteItem(snapshots.getSnapshot(adapterPosition))
+            }
         }
 
     }

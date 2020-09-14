@@ -10,7 +10,7 @@ import com.app.fruit2you.data.database.entities.FruitItem
 
 @Database(
     entities = [FruitItem::class],
-    version = 1
+    version = 2
 )
 abstract class Fruit2YouDatabase: RoomDatabase() {
     abstract fun getFruitsDao(): FruitsDao
@@ -29,6 +29,8 @@ abstract class Fruit2YouDatabase: RoomDatabase() {
             }
 
         private fun createDatabase(context: Context)
-                = Room.databaseBuilder(context.applicationContext, Fruit2YouDatabase::class.java, "fruit2youDB.db").build()
+                = Room.databaseBuilder(context.applicationContext, Fruit2YouDatabase::class.java, "fruit2youDB.db")
+            .fallbackToDestructiveMigration()
+            .build()
     }
 }
