@@ -26,7 +26,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppins"
         android:text="@string/items"
-        android:textColor="@color/raveBlack"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@id/referenceText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date" />
