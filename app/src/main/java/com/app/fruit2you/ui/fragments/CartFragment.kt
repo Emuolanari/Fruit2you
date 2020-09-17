@@ -46,6 +46,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
     private var fName=""
     private var lName=""
     private lateinit var itemsString: String
+    private lateinit var newString: String
     private lateinit var txRef: String
     private val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss a", Locale.UK)
     private val currentDate = sdf.format(Date())
@@ -154,6 +155,10 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             val items = it
             val separator = ","
             itemsString = items.joinToString(separator)
+            newString = itemsString.replace("FruitItem(name=", "")
+            newString = newString.replace("amount=", "₦")
+            newString= newString.replace("quantity=", "quantity:")
+            newString= newString.replace(")", "")
         })
 
         address.setOnTouchListener { v, event ->
@@ -219,7 +224,7 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
                             fstore.collection("users").document(uid).collection("orders")
                         val order = hashMapOf<String, Any>()
                         order["ref"] = txRef
-                        order["items"] = itemsString
+                        order["items"] = newString
                         order["date"] = currentDate
                         order["address"] = deliveryAddress
 
