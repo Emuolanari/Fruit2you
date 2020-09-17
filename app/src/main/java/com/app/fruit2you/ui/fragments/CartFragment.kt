@@ -155,10 +155,11 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
             val items = it
             val separator = ","
             itemsString = items.joinToString(separator)
-            newString = itemsString.replace("FruitItem(name=", "")
+            newString = itemsString.replace("FruitItem(name=", "\n")
             newString = newString.replace("amount=", "₦")
             newString= newString.replace("quantity=", "quantity:")
             newString= newString.replace(")", "")
+            newString = newString.trim()
         })
 
         address.setOnTouchListener { v, event ->
