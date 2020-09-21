@@ -35,7 +35,11 @@ class MainActivity : AppCompatActivity() , KodeinAware {
         val profileFragment = ProfileFragment()
         val orderFragment = OrderFragment()
 
-        setCurrentFragment(homeFragment)
+        //bottomNavigationView.selectedItemId = R.id.miHome
+        if (savedInstanceState==null){
+            setCurrentFragment(homeFragment)
+        }
+
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.miHome -> setCurrentFragment(homeFragment)
