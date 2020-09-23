@@ -22,8 +22,8 @@ import org.kodein.di.generic.instance
 class MainActivity : AppCompatActivity() , KodeinAware {
     override val kodein by kodein()
     private val factory: Fruit2YouViewModelFactory by instance()
-
     private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewModel = ViewModelProvider(this, factory).get(Fruit2YouViewModel::class.java)

@@ -18,5 +18,7 @@ class Fruit2YouViewModel(private val repository: Fruit2YouRepository): ViewModel
     fun getAllShoppingItems() = repository.getAllShoppingItems()
     fun numberOfCartItems() = repository.numberOfCartItems()
     fun priceOfCartItems() = repository.priceOfCartItems()
-    fun nukeTable() = repository.nukeTable()
+    fun nukeTable() = CoroutineScope(Dispatchers.IO).launch {
+        repository.nukeTable()
+    }
 }

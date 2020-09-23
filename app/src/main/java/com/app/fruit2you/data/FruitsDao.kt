@@ -22,5 +22,5 @@ interface FruitsDao {
     fun priceOfCartItems(): LiveData<Int>
 
     @Query("DELETE FROM shopping_items")
-    fun nukeTable()
+    suspend fun nukeTable()
 }

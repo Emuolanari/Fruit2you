@@ -16,6 +16,6 @@ class Fruit2YouRepository(
 
     fun priceOfCartItems() = db.getFruitsDao().priceOfCartItems()
 
-    fun nukeTable() = db.getFruitsDao().nukeTable()
+    suspend fun nukeTable() = db.getFruitsDao().nukeTable()
 
 }
