@@ -71,10 +71,10 @@ class MainActivity : AppCompatActivity() , KodeinAware {
 
     }
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         setCurrentFragment(homeFragment)
-    }
+    }*/
 
     private fun setCurrentFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply{
