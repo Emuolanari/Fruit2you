@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.app.fruit2you.R
@@ -23,6 +24,10 @@ class MainActivity : AppCompatActivity() , KodeinAware {
     override val kodein by kodein()
     private val factory: Fruit2YouViewModelFactory by instance()
     private lateinit var auth: FirebaseAuth
+    private val homeFragment = HomeFragment()
+    private val cartFragment = CartFragment()
+    private val profileFragment = ProfileFragment()
+    private val orderFragment = OrderFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +35,6 @@ class MainActivity : AppCompatActivity() , KodeinAware {
         auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_main)
 
-        val homeFragment = HomeFragment()
-        val cartFragment = CartFragment()
-        val profileFragment = ProfileFragment()
-        val orderFragment = OrderFragment()
 
         //bottomNavigationView.selectedItemId = R.id.miHome
         if (savedInstanceState==null){
@@ -70,6 +71,11 @@ class MainActivity : AppCompatActivity() , KodeinAware {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        setCurrentFragment(homeFragment)
+    }
+
     private fun setCurrentFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction().apply{
             replace(R.id.flFragment, fragment)
@@ -78,17 +84,25 @@ class MainActivity : AppCompatActivity() , KodeinAware {
         }
     }
 
-   /* override fun onBackPressed() {
+    override fun onBackPressed() {
         val count = supportFragmentManager.backStackEntryCount
-        if (count == 0) {
+        if (count > 1) {
+            /*supportFragmentManager.addOnBackStackChangedListener {
+                if (supportFragmentManager.backStackEntryCount <= count) {
+                    bottomNavigationView.menu.getItem(2).isChecked = true
+                }
+            }*/
+
+            supportFragmentManager.popBackStack()
+        } else {
             super.onBackPressed()
             val intent = Intent(Intent.ACTION_MAIN)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.addCategory(Intent.CATEGORY_HOME)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
-        } else {
-            supportFragmentManager.popBackStack()
+            //supportFragmentManager.popBackStack()
         }
-    }*/
+    }
+
 }
