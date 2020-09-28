@@ -24,17 +24,17 @@
     <string name="available_products">Available Products</string>
     <string name="orange_image">Orange Image</string>
     <string name="_500_00">500.00</string>
-    <string name="orange">Orange</string>
+    <string name="orange">Oranges</string>
     <string name="buy_now">Add To Cart</string>
     <string name="pcs">10 &#8211; 20 pcs</string>
     <string name="mango_image">mango image</string>
     <string name="coconut_image">coconut image</string>
     <string name="strawberry_image">strawberry image</string>
-    <string name="mango">Mango</string>
+    <string name="mango">Mangoes</string>
     <string name="_1_pack_1_5kg">1 pack 1.5kg</string>
     <string name="logout">Logout</string>
-    <string name="strawberry">Strawberry</string>
-    <string name="coconut">Coconut</string>
+    <string name="strawberry">Strawberries</string>
+    <string name="coconut">Coconuts</string>
     <string name="sizes">sizes</string>
     <string name="_1kg_n500">1kg-N500</string>
     <string name="delivery">Delivery</string>
@@ -75,7 +75,8 @@
     <string name="date">Date</string>
     <string name="payment_reference">Payment Reference</string>
     <string name="items">Items</string>
-    <string name="orderref">OrderRef:</string>
+    <string name="orderref">Order Id:</string>
     <string name="delivery_icon">delivery icon</string>
     <string name="yellow_circle">yellow circle</string>
+    <string name="doneicon">doneIcon</string>
 </resources>

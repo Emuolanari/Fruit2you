@@ -96,7 +96,7 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
             .child("$upid.jpeg")
         reference.putBytes(baos.toByteArray())
             .addOnSuccessListener { getDownloadUrl(reference) }
-            .addOnFailureListener { e -> Log.e("TAG", "onFailure:", e.cause) }
+            //.addOnFailureListener { e -> Log.e("TAG", "onFailure:", e.cause) }
     }
 
     private fun getDownloadUrl(reference: StorageReference) {

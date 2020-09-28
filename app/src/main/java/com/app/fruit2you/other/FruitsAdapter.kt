@@ -31,13 +31,13 @@ class FruitsAdapter(
         holder.itemView.tvQuantity.text = "${curFruitItem.quantity}"
         holder.itemView.amount.text = "${curFruitItem.amount}"
 
-        if(curFruitItem.name=="strawberry pack"){
+        if(curFruitItem.name=="Strawberries pack"){
             myImage.setImageResource(R.drawable.strawberry)
         }
-        else if(curFruitItem.name=="coconut pack"){
+        else if(curFruitItem.name=="Coconuts pack"){
             myImage.setImageResource(R.drawable.coconut)
         }
-        else if(curFruitItem.name=="mango pack"){
+        else if(curFruitItem.name=="Mangoes pack"){
             myImage.setImageResource(R.drawable.mangoes)
         }
         else{

@@ -102,7 +102,7 @@ class RegisterActivity : AppCompatActivity() {
                     } else {
                         // If sign in fails, display a message to the user.
                         progressBar.visibility = View.INVISIBLE
-                        Log.d("TAG", "createUserWithEmail:failure"+ task.exception)
+                        //Log.d("TAG", "createUserWithEmail:failure"+ task.exception)
                         Toast.makeText(this, "failed "+task.exception,
                             Toast.LENGTH_LONG).show()
                     }

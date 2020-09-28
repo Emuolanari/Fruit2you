@@ -45,7 +45,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             mAlertDialog.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int ->
                 val qty: Int = quantity.text.toString().toInt()
                 val amount:Int = qty * 500
-                val fruit= FruitItem("mango pack",amount, qty)
+                val fruit= FruitItem("Mangoes pack",amount, qty)
                 viewModel.upsert(fruit)
             }
             mAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->
@@ -66,7 +66,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             oAlertDialog.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int ->
                 val qty: Int = quantity.text.toString().toInt()
                 val amount:Int = qty * 500
-                val fruit= FruitItem("orange pack",amount, qty)
+                val fruit= FruitItem("Oranges pack",amount, qty)
                 viewModel.upsert(fruit)
             }
             oAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->
@@ -87,7 +87,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             sAlertDialog.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int ->
                 val qty: Int = quantity.text.toString().toInt()
                 val amount:Int = qty * 500
-                val fruit= FruitItem("strawberry pack",amount, qty)
+                val fruit= FruitItem("Strawberries pack",amount, qty)
                 viewModel.upsert(fruit)
             }
             sAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->
@@ -108,7 +108,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), KodeinAware {
             cAlertDialog.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int ->
                 val qty: Int = quantity.text.toString().toInt()
                 val amount:Int = qty * 500
-                val fruit= FruitItem("coconut pack",amount, qty)
+                val fruit= FruitItem("Coconuts pack",amount, qty)
                 viewModel.upsert(fruit)
             }
             cAlertDialog.setNegativeButton("cancel"){ dialog: DialogInterface?, which: Int ->
