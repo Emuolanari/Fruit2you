@@ -46,7 +46,7 @@ FirestoreRecyclerAdapter<Product, ProductsAdapter.ProductHolder>(options){
 
         holder.buy.setOnClickListener {
             if (position!=RecyclerView.NO_POSITION){
-                val fruit = FruitItem(holder.name.text.toString() ,holder.amount.text.toString().toInt(), 1)
+                val fruit = FruitItem(holder.name.text.toString() ,holder.amount.text.toString().toInt(), holder.amount.text.toString().toInt(),1)
                 viewModel.upsert(fruit)
                 Snackbar.make(holder.amount,"Item added to Cart",Snackbar.LENGTH_SHORT).show()
 

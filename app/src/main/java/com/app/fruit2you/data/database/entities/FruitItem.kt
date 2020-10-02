@@ -1,4 +1,5 @@
 package com.app.fruit2you.data.database.entities
+import androidx.lifecycle.LiveData
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,6 +9,7 @@ data class FruitItem(
     @PrimaryKey
     var name: String,
     var amount: Int,
+    var amountOfOneItem: Int,
     var quantity: Int) {
 
 }
