@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.net.MalformedURLException
 import java.net.URL
 
 class FruitsAdapter(
@@ -44,8 +45,8 @@ class FruitsAdapter(
                     .load(url)
                     .into(myImage)
             }
-            catch (e:IOException){
-
+            catch (e:MalformedURLException){
+                
             }
 
         }
