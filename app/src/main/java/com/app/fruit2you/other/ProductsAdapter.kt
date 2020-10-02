@@ -44,6 +44,7 @@ FirestoreRecyclerAdapter<Product, ProductsAdapter.ProductHolder>(options){
             .load(url)
             .into(holder.imageURL)
 
+
         holder.buy.setOnClickListener {
             if (position!=RecyclerView.NO_POSITION){
                 val fruit = FruitItem(holder.name.text.toString() ,holder.amount.text.toString().toInt(), holder.amount.text.toString().toInt(),1)

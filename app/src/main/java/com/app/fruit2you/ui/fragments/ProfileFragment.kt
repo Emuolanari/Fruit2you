@@ -30,7 +30,6 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         //val userId = auth.currentUser?.uid
 
         if (user!!.photoUrl != null) {

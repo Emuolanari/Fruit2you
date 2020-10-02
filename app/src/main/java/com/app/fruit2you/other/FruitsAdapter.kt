@@ -1,5 +1,6 @@
 package com.app.fruit2you.other
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,10 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fruit_item.view.*
 import kotlinx.android.synthetic.main.fruit_item.view.tvQuantity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.io.IOException
 import java.net.URL
 
 class FruitsAdapter(
@@ -30,18 +35,25 @@ class FruitsAdapter(
     override fun onBindViewHolder(holder: FruitsViewHolder, position: Int) {
         val curFruitItem = items[position]
         val  myImage = holder.itemView.fruitImage
-        holder.itemView.tvName.text = curFruitItem.name
-        holder.itemView.tvQuantity.text = "${curFruitItem.quantity}"
-        holder.itemView.amount.text = "${curFruitItem.amount}"
         val fstore: FirebaseFirestore = FirebaseFirestore.getInstance()
         val docRef = fstore.collection("items").document(curFruitItem.name)
         docRef.addSnapshotListener{snapshot, e->
-            val imageSrc = snapshot?.getString("imageURL")
-            val url = URL(imageSrc)
-            Glide.with(holder.itemView.context)
-                .load(url)
-                .into(myImage)
+            try{
+                val url = URL(snapshot?.getString("imageURL"))
+                Glide.with(myImage.context)
+                    .load(url)
+                    .into(myImage)
+            }
+            catch (e:IOException){
+
+            }
+
         }
+        holder.itemView.tvName.text = curFruitItem.name
+        holder.itemView.tvQuantity.text = "${curFruitItem.quantity}"
+        holder.itemView.amount.text = "${curFruitItem.amount}"
+
+
 
 
         holder.itemView.ivDelete.setOnClickListener {
