@@ -19,6 +19,7 @@ import com.app.fruit2you.ui.Fruit2YouViewModel
 import com.bumptech.glide.Glide
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 import java.net.URL
 import java.security.AccessController.getContext
@@ -45,8 +46,9 @@ FirestoreRecyclerAdapter<Product, ProductsAdapter.ProductHolder>(options){
 
         holder.buy.setOnClickListener {
             if (position!=RecyclerView.NO_POSITION){
-                val fruit = FruitItem(holder.name.text.toString() ,holder.amount.text.toString().toDouble(), 1)
+                val fruit = FruitItem(holder.name.text.toString() ,holder.amount.text.toString().toInt(), 1)
                 viewModel.upsert(fruit)
+                Snackbar.make(holder.amount,"Item added to Cart",Snackbar.LENGTH_SHORT).show()
 
             }
             //Toast.makeText(holder.amount.context,holder.name.text.toString()+ " "+holder.amount.text.toString().toDouble(),Toast.LENGTH_LONG).show()

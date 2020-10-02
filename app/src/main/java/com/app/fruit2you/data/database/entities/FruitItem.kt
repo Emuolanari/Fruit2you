@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class FruitItem(
     @PrimaryKey
     var name: String,
-    var amount: Double,
+    var amount: Int,
     var quantity: Int) {
 
 }

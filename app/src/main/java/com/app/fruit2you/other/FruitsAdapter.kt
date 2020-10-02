@@ -33,7 +33,7 @@ class FruitsAdapter(
         holder.itemView.tvName.text = curFruitItem.name
         holder.itemView.tvQuantity.text = "${curFruitItem.quantity}"
         holder.itemView.amount.text = "${curFruitItem.amount}"
-        var fstore: FirebaseFirestore = FirebaseFirestore.getInstance()
+        val fstore: FirebaseFirestore = FirebaseFirestore.getInstance()
         val docRef = fstore.collection("items").document(curFruitItem.name)
         docRef.addSnapshotListener{snapshot, e->
             val imageSrc = snapshot?.getString("imageURL")
@@ -50,14 +50,14 @@ class FruitsAdapter(
 
         holder.itemView.ivPlus.setOnClickListener {
             curFruitItem.quantity++
-            curFruitItem.amount = curFruitItem.quantity * 500.00
+            curFruitItem.amount = curFruitItem.quantity * curFruitItem.amount
             viewModel.upsert(curFruitItem)
         }
 
         holder.itemView.ivMinus.setOnClickListener {
             if(curFruitItem.quantity > 0) {
                 curFruitItem.quantity--
-                curFruitItem.amount = curFruitItem.quantity * 500.00
+                curFruitItem.amount = curFruitItem.quantity * curFruitItem.amount
                 viewModel.upsert(curFruitItem)
             }
         }
