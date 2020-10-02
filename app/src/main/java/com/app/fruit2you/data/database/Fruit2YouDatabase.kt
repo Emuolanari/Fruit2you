@@ -10,7 +10,7 @@ import com.app.fruit2you.data.database.entities.FruitItem
 
 @Database(
     entities = [FruitItem::class],
-    version = 2
+    version = 5
 )
 abstract class Fruit2YouDatabase: RoomDatabase() {
     abstract fun getFruitsDao(): FruitsDao

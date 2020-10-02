@@ -50,14 +50,14 @@ class FruitsAdapter(
 
         holder.itemView.ivPlus.setOnClickListener {
             curFruitItem.quantity++
-            curFruitItem.amount = curFruitItem.quantity * 500
+            curFruitItem.amount = curFruitItem.quantity * 500.00
             viewModel.upsert(curFruitItem)
         }
 
         holder.itemView.ivMinus.setOnClickListener {
             if(curFruitItem.quantity > 0) {
                 curFruitItem.quantity--
-                curFruitItem.amount = curFruitItem.quantity * 500
+                curFruitItem.amount = curFruitItem.quantity * 500.00
                 viewModel.upsert(curFruitItem)
             }
         }
