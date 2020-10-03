@@ -46,7 +46,7 @@ class FruitsAdapter(
                     .into(myImage)
             }
             catch (e:MalformedURLException){
-                
+
             }
 
         }
@@ -63,14 +63,14 @@ class FruitsAdapter(
 
         holder.itemView.ivPlus.setOnClickListener {
             curFruitItem.quantity++
-            curFruitItem.amount = curFruitItem.quantity * curFruitItem.amountOfOneItem
+            curFruitItem.amount = curFruitItem.quantity * curFruitItem.priceOfOne
             viewModel.upsert(curFruitItem)
         }
 
         holder.itemView.ivMinus.setOnClickListener {
             if(curFruitItem.quantity > 1) {
                 curFruitItem.quantity--
-                curFruitItem.amount = curFruitItem.quantity * curFruitItem.amountOfOneItem
+                curFruitItem.amount = curFruitItem.quantity * curFruitItem.priceOfOne
                 viewModel.upsert(curFruitItem)
             }
         }

@@ -9,7 +9,7 @@ data class FruitItem(
     @PrimaryKey
     var name: String,
     var amount: Int,
-    var amountOfOneItem: Int,
+    var priceOfOne: Int,
     var quantity: Int) {
 
 }

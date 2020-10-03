@@ -154,11 +154,16 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
         viewModel.getAllShoppingItems().observe(viewLifecycleOwner, Observer <List<FruitItem>> {
             val items = it
             val separator = ","
+            val numberRegex:Regex ="priceOfOne=[0-9]+([,])".toRegex()
+
+
             itemsString = items.joinToString(separator)
             newString = itemsString.replace("FruitItem(name=", "\n")
-            newString = newString.replace("amount=", "₦")
+            newString = newString.replace("amount=", "amount:₦")
             newString= newString.replace("quantity=", "quantity:")
             newString= newString.replace(")", "")
+            //newString= newString.replace("priceOfOne=", "")
+            newString = numberRegex.replace(newString,"")
             newString = newString.trim()
         })
 
