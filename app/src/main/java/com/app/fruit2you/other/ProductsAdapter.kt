@@ -39,7 +39,7 @@ FirestoreRecyclerAdapter<Product, ProductsAdapter.ProductHolder>(options){
         holder.name.text = model.getName()
         holder.description.text = model.getDescription()
         holder.amount.text= model.getAmount()
-        val url = URL(model.getImageURL())
+        val url: URL? = URL(model.getImageURL())
         Glide.with(holder.imageURL.context)
             .load(url)
             .into(holder.imageURL)
