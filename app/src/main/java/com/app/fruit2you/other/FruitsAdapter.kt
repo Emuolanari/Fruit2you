@@ -40,7 +40,7 @@ class FruitsAdapter(
         val docRef = fstore.collection("items").document(curFruitItem.name)
         docRef.addSnapshotListener{snapshot, e->
             try{
-                val url = URL(snapshot?.getString("imageURL"))
+                val url: URL? = URL(snapshot?.getString("imageURL"))
                 Glide.with(myImage.context)
                     .load(url)
                     .into(myImage)
