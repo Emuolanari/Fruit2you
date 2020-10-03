@@ -159,10 +159,9 @@ class CartFragment: Fragment(R.layout.cart_fragment), KodeinAware {
 
             itemsString = items.joinToString(separator)
             newString = itemsString.replace("FruitItem(name=", "\n")
-            newString = newString.replace("amount=", "amount:₦")
-            newString= newString.replace("quantity=", "quantity:")
+            newString = newString.replace("amount=", "₦")
+            newString= newString.replace("quantity=", "quantity: ")
             newString= newString.replace(")", "")
-            //newString= newString.replace("priceOfOne=", "")
             newString = numberRegex.replace(newString,"")
             newString = newString.trim()
         })
