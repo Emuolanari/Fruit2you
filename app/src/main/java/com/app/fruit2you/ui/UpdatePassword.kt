@@ -35,6 +35,9 @@ class UpdatePassword : AppCompatActivity() {
                 val oldPassword = currentPassword.text.toString().trim()
                 val updatedPassword = newPassword.text.toString().trim()
 
+                if (oldPassword.isEmpty()){
+                    currentPassword.error = "Please enter your current password"
+                }
 
                 if(updatedPassword.length<6){
                     newPassword.error = "Password must be at least 6 characters"
